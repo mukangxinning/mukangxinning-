@@ -1,702 +1,519 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="description" content="硒康视力养护 - 蒿石七穴家庭护眼操，老少皆宜，在家就能做。三位一体防控体系，咸阳本地服务。">
-    <title>硒康视力养护 | 蒿石七穴家庭护眼操 · 老少皆宜</title>
+    <title>硒康视力养护 | 五维护眼 · 清晰视界</title>
+    <meta name="description" content="硒康视力养护，五维护眼体系，中医砭石+现代光学+非遗膏方，专注青少年近视防控。全预约制，西安高新店。">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
-            background: #f4f8f4;
-            color: #1a2e28;
-            line-height: 1.45;
+            font-family: 'Segoe UI', 'Noto Sans', system-ui, -apple-system, 'Quicksand', 'Microsoft YaHei', sans-serif;
+            background: #fafef7;
+            color: #2a4d3c;
+            line-height: 1.5;
         }
-
-        .page {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 30px rgba(0,0,0,0.02);
+            padding: 0 24px;
         }
-
-        @media (max-width: 768px) {
-            .page {
-                max-width: 100%;
-            }
+        /* 柔和绿 + 暖橙 */
+        :root {
+            --primary: #5ba06e;
+            --primary-dark: #3d734b;
+            --primary-light: #dff0e3;
+            --accent: #f7b45a;
+            --accent-dark: #e09d3a;
+            --bg-card: #ffffff;
+            --bg-soft: #f9fef7;
+            --text-dark: #2a4d3c;
+            --text-muted: #6f8f7a;
+            --border-radius-card: 28px;
+            --shadow-sm: 0 8px 24px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.02);
         }
-
-        /* 顶部导航 */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: white;
-            border-bottom: 1px solid #e2efe7;
+        .header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #266b48, #479f76);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .logo p {
-            font-size: 0.7rem;
-            color: #6b8a78;
+            border-bottom: 1px solid var(--primary-light);
         }
         .nav {
             display: flex;
-            gap: 18px;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 4px;
+            padding: 12px 0;
+        }
+        .nav li {
+            list-style: none;
         }
         .nav a {
-            text-decoration: none;
-            color: #2b6749;
-            font-weight: 500;
-            font-size: 0.88rem;
-        }
-        .btn-nav {
-            background: #266b48;
-            color: white !important;
-            padding: 6px 16px;
-            border-radius: 30px;
-        }
-
-        /* Hero 轮播 */
-        .hero-slider {
-            position: relative;
-            overflow: hidden;
-        }
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .slide {
-            flex: 0 0 100%;
-            padding: 48px 24px;
-            text-align: center;
-            background: linear-gradient(105deg, #eef6f0 0%, white 80%);
-        }
-        .hero-badge {
-            background: #d9ecd9;
             display: inline-block;
-            padding: 6px 18px;
+            padding: 8px 18px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            text-decoration: none;
             border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2b6749;
-            margin-bottom: 20px;
+            transition: all 0.2s;
         }
-        .hero h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1b4636;
+        .nav a:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        .hero {
+            background: linear-gradient(135deg, #eef7e8 0%, #ffffff 100%);
+            border-radius: 0 0 56px 56px;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.3rem;
+            color: var(--primary-dark);
             margin-bottom: 16px;
+            font-weight: 700;
         }
         .hero p {
-            font-size: 1.05rem;
-            color: #4f6e5e;
-            max-width: 600px;
-            margin: 0 auto 24px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 28px;
         }
-        .slider-dots {
-            text-align: center;
-            padding: 12px;
-            margin-top: -20px;
-        }
-        .dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #cbdcd2;
-            border-radius: 50%;
-            margin: 0 6px;
-            cursor: pointer;
-        }
-        .dot.active {
-            background: #2c7a55;
-        }
-
-        /* 双体验卡片 */
-        .exp-cards {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            padding: 0 24px;
-            margin-top: -30px;
-            margin-bottom: 48px;
-            flex-wrap: wrap;
-        }
-        .exp-card {
-            background: white;
-            border-radius: 32px;
-            padding: 24px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #deede4;
-        }
-        .exp-price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #2c7a55;
-            margin: 12px 0;
-        }
-        .btn-light {
-            background: #eaf3ed;
-            padding: 10px 24px;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 16px;
+        .btn-primary {
+            background: var(--accent);
+            color: #4a2e1a;
+            padding: 12px 32px;
+            border-radius: 60px;
             font-weight: 600;
-            color: #2c7a55;
+            display: inline-block;
             text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
-        /* 通用区块 */
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
         .section {
-            padding: 48px 24px;
-            border-bottom: 1px solid #e9f0ea;
+            padding: 60px 0;
         }
         .section-title {
-            font-size: 1.9rem;
-            font-weight: 700;
             text-align: center;
+            font-size: 2rem;
+            color: var(--primary-dark);
             margin-bottom: 12px;
+            font-weight: 700;
         }
         .section-sub {
             text-align: center;
-            color: #6b8a78;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
             font-size: 1rem;
         }
-
-        /* 三位一体 */
-        .three-grid {
+        .grid {
             display: flex;
-            gap: 32px;
-            justify-content: center;
             flex-wrap: wrap;
+            gap: 28px;
+        }
+        .grid-item {
+            flex: 1 1 calc(25% - 28px);
+            min-width: 220px;
+        }
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-card);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #edf5e8;
+            height: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .product-img {
+            background: #fafefa;
+            border-radius: 24px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            overflow: hidden;
+        }
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+        .price-big {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #e07c2c;
+        }
+        .two-column {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
             margin-top: 20px;
         }
-        .three-item {
-            background: #f9fef9;
-            border-radius: 32px;
-            padding: 28px 20px;
+        .col {
             flex: 1;
-            min-width: 200px;
-            text-align: center;
-            border: 1px solid #deede4;
+            min-width: 260px;
         }
-        .three-item h3 {
-            font-size: 1.5rem;
-            margin: 16px 0 12px;
-        }
-
-        /* 蒿石七穴 - 家庭化卡片 */
-        .massage-grid {
+        .acupoint-list {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 16px;
         }
-        .massage-card {
-            background: #ffffff;
-            border-radius: 32px;
-            border: 1px solid #e0f0e5;
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            transition: all 0.2s;
-        }
-        .massage-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #e4f0e8;
-            padding-bottom: 12px;
-        }
-        .massage-name {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #1c4a38;
-        }
-        .massage-tag {
-            background: #e2f0e8;
-            padding: 4px 14px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #2b6749;
-        }
-        .massage-loc {
-            font-size: 0.9rem;
-            color: #3b6b55;
-            margin: 8px 0 4px;
-            font-weight: 500;
-        }
-        .massage-desc {
-            font-size: 0.95rem;
-            color: #2d4b3e;
-            margin: 12px 0;
-            line-height: 1.5;
-        }
-        .massage-product {
-            background: #f4faf6;
-            padding: 10px 14px;
+        .acupoint-card {
+            background: #fefef8;
             border-radius: 24px;
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: #2c7a55;
-            display: inline-block;
+            padding: 18px;
+            border-left: 5px solid var(--accent);
+            box-shadow: var(--shadow-sm);
         }
-
-        /* 产品墙 */
-        .product-series {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .series-card {
-            background: white;
-            border-radius: 32px;
-            border: 1px solid #deede4;
-            padding: 24px;
-            flex: 1;
-            min-width: 240px;
-            text-align: center;
-        }
-        .series-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            color: #2c7a55;
-        }
-        .product-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 16px;
-        }
-        .product-tag {
-            background: #f0f5f0;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-        }
-
-        /* 故事和案例 */
-        .story-card, .case-card {
-            background: #fefaf2;
-            border-radius: 32px;
+        .checkin-box {
+            background: #f1f9ef;
+            border-radius: 48px;
             padding: 28px;
-            max-width: 800px;
-            margin: 0 auto 24px;
-            border-left: 6px solid #e6b064;
-        }
-        .case-card {
-            background: white;
-            border-left-color: #79b692;
-        }
-
-        /* 加盟合作 */
-        .partner-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .partner-item {
-            background: #fefaf0;
-            border-radius: 28px;
-            padding: 24px;
-            flex: 1;
-            min-width: 240px;
-            border-left: 6px solid #e6b064;
-        }
-
-        /* 表单 */
-        .form-container {
-            background: #ecf6ef;
-            border-radius: 32px;
-            padding: 32px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px;
-            border-radius: 48px;
-            border: 1px solid #cde0d6;
-            font-size: 1rem;
-        }
-        .btn-submit {
-            background: #2c7a55;
-            color: white;
-            padding: 14px;
-            width: 100%;
-            border: none;
-            border-radius: 48px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        /* 底部 */
-        .footer {
-            background: #fafaf5;
-            padding: 32px 24px;
             text-align: center;
-            font-size: 0.75rem;
-            color: #7c9282;
+            margin-top: 40px;
         }
-        .float-contact {
+        .footer {
+            background: var(--primary-light);
+            text-align: center;
+            padding: 32px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+            color: var(--primary-dark);
+        }
+        @media (max-width: 768px) {
+            .grid-item { flex: 1 1 calc(50% - 20px); }
+            .hero h1 { font-size: 1.7rem; }
+            .section-title { font-size: 1.6rem; }
+            .nav a { padding: 6px 12px; font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            .grid-item { flex: 1 1 100%; }
+        }
+        .float-buttons {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2c7a55;
-            color: white;
-            width: 56px;
-            height: 56px;
+            right: 18px;
+            bottom: 28px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .float-btn {
+            width: 52px;
+            height: 52px;
+            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            color: white;
+            font-size: 24px;
             cursor: pointer;
-            z-index: 99;
-            font-size: 28px;
-            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.2s;
         }
-        a {
-            text-decoration: none;
+        .float-btn:hover {
+            transform: scale(1.05);
+            background: var(--primary-dark);
         }
-        .family-badge {
-            background: #ffecd6;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: #c96f0e;
-            margin-right: 8px;
+        .infographic-img {
+            width: 100%;
+            border-radius: 24px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-<div class="page">
-    <!-- 顶部导航 -->
-    <div class="top-bar">
-        <div class="logo">
-            <h1>硒康视力养护</h1>
-            <p>青少年近视防控 · 三位一体</p>
-        </div>
-        <div class="nav">
-            <a href="#home">首页</a>
-            <a href="#three">三位一体</a>
-            <a href="#massage">蒿石七穴</a>
-            <a href="#products">产品</a>
-            <a href="#story">硒康故事</a>
-            <a href="#join">合作</a>
-            <a href="#contact" class="btn-nav">到店体验</a>
-        </div>
+    <div class="float-buttons">
+        <div class="float-btn" onclick="alert('门店微信/电话：15291025301，欢迎咨询🌿')">💬</div>
+        <div class="float-btn" onclick="alert('全预约制，请提前微信预约～')">📅</div>
     </div>
 
-    <!-- Hero 轮播 -->
-    <div class="hero-slider" id="home">
-        <div class="slides" id="slides">
-            <div class="slide">
-                <div class="hero-badge">⭐ 固气血 · 调外境 · 养习惯</div>
-                <h2>别让孩子近视成定局！<br>「硒康」一站式防控方案</h2>
-                <p>中医砭石 + AI动态变焦，科学“养+调+防”，稳住孩子视力</p>
-                <a href="#contact" class="btn-light" style="background:#2c7a55; color:white;">👆 免费领取「近视防控评估表」</a>
-            </div>
-            <div class="slide">
-                <div class="hero-badge">🚀 低门槛创业 · 总部陪跑</div>
-                <h2>分享真实案例：<br>投资数万，3个月回款5万+</h2>
-                <p>硒康加盟体系，0库存风险，商学院全程支持</p>
-                <a href="#join" class="btn-light" style="background:#2c7a55; color:white;">👆 获取加盟政策</a>
-            </div>
-            <div class="slide">
-                <div class="hero-badge">🏪 异业联盟 · 共享蓝海</div>
-                <h2>0库存风险！<br>眼贴代售立赚28元/盒</h2>
-                <p>客户引流即享20元/人到店奖励，仪器上门0风险</p>
-                <a href="#join" class="btn-light" style="background:#2c7a55; color:white;">👆 查看合作方案</a>
+    <header class="header">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <img src="images/logo.png" alt="硒康视力养护" style="height: 48px; margin-right: 12px;">
+                    <span style="font-weight: 700; font-size: 1.2rem; color: var(--primary-dark);">硒康视力养护</span>
+                </div>
+                <ul class="nav" style="margin: 0;">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#five">五维护眼</a></li>
+                    <li><a href="#product">产品</a></li>
+                    <li><a href="#science">近视科普</a></li>
+                    <li><a href="#acupoint">七穴手法</a></li>
+                    <li><a href="#heritage">非遗传承</a></li>
+                    <li><a href="#package">体验套餐</a></li>
+                    <li><a href="#cooperate">合作/招募</a></li>
+                    <li><a href="#shop">门店</a></li>
+                </ul>
             </div>
         </div>
-        <div class="slider-dots" id="dots"></div>
-    </div>
+    </header>
 
-    <!-- 体验卡 -->
-    <div class="exp-cards">
-        <div class="exp-card">
-            <div style="font-size: 2rem;">🌿</div>
-            <h3>轻体验 · 砭石快养</h3>
-            <div class="exp-price">9.9 <small>元/次</small></div>
-            <div>5分钟眼周疏通+草本眼贴</div>
-            <a href="#contact" class="btn-light">立即预约</a>
+    <!-- Hero 主视觉 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>🌱 补光·补远·补气血<br>科学防控青少年近视</h1>
+            <p>五维护眼体系 | 中医砭石+现代光学 | 非遗膏方内调 | 全预约制</p>
+            <a href="#package" class="btn-primary">✨ 预约9.9元基础体验 ✨</a>
         </div>
-        <div class="exp-card">
-            <div style="font-size: 2rem;">✨</div>
-            <h3>深度养护 · 完整版</h3>
-            <div class="exp-price">99 <small>元/首次</small></div>
-            <div>砭石+阳光仪+AI镜 (20分钟)</div>
-            <a href="#contact" class="btn-light">深度体验</a>
-        </div>
-    </div>
+    </section>
 
-    <!-- 三位一体理念 -->
-    <div id="three" class="section">
-        <div class="section-title">三位一体护眼体系</div>
-        <div class="section-sub">固气血 · 调外境 · 养习惯 · 科学防控</div>
-        <div class="three-grid">
-            <div class="three-item"><div style="font-size: 2.5rem;">🌿</div><h3>固气血 · 强根基</h3><p>膳食内调 + 营养补充<br>从内在为眼睛提供充足能量</p></div>
-            <div class="three-item"><div style="font-size: 2.5rem;">🔬</div><h3>调外境 · 优环境</h3><p>阳光仪 + AI动态变焦镜<br>模拟望远，优化视觉环境</p></div>
-            <div class="three-item"><div style="font-size: 2.5rem;">🧘</div><h3>养习惯 · 可持续</h3><p>三个一坐姿 + 三个二十法则<br>日常行为防控源头</p></div>
-        </div>
-    </div>
-
-    <!-- 蒿石七穴：家庭护眼操（老少皆宜） -->
-    <div id="massage" class="section" style="background: #fdfdf5;">
-        <div class="section-title">📜 蒿石七穴 · 家庭护眼操</div>
-        <div class="section-sub">源自本地老中医「蒿石」传承手法 · 每天5分钟 · 孩子老人一起做</div>
-        
-        <!-- 家庭适用性说明 -->
-        <div style="max-width: 800px; margin: -20px auto 30px; text-align: center;">
-            <span class="family-badge">👧 6岁+儿童</span>
-            <span class="family-badge">👩 上班族</span>
-            <span class="family-badge">👴 中老年人</span>
-            <p style="margin-top: 12px; font-size: 0.9rem; color: #5e7c6b;">动作温和，无需工具，看电视、写作业间隙、睡前均可操作</p>
-        </div>
-
-        <div class="massage-grid">
-            <!-- 1 睛明穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">① 睛明穴</span><span class="massage-tag">👆 内眼角上方凹陷</span></div>
-                <div class="massage-loc">📍 怎么找：捏鼻梁时，手指碰到的最凹处</div>
-                <div class="massage-desc">🧑‍🏫 手法：双手拇指指腹轻按，酸胀感为宜，按揉10次为一组，早中晚各1组。<br>✨ 功效：缓解眼睛干涩、红血丝，放松睫状肌。</div>
-                <div class="massage-product">💡 搭配建议：先贴「星优视眼贴」5分钟，再按揉，吸收更佳</div>
-            </div>
-            <!-- 2 攒竹穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">② 攒竹穴</span><span class="massage-tag">👆 眉头内侧凹陷</span></div>
-                <div class="massage-loc">📍 怎么找：眉毛最里端，有个小坑</div>
-                <div class="massage-desc">🧑‍🏫 手法：拇指从眉头向眉尾方向轻推，每次8-10下，早晚各一次。<br>✨ 功效：消除眼部水肿，缓解长时间用眼后的胀痛。</div>
-                <div class="massage-product">💡 搭配建议：孩子网课休息时，顺手推一推</div>
-            </div>
-            <!-- 3 鱼腰穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">③ 鱼腰穴</span><span class="massage-tag">👆 眉毛中点</span></div>
-                <div class="massage-loc">📍 怎么找：正对瞳孔，眉毛正中间</div>
-                <div class="massage-desc">🧑‍🏫 手法：食指指腹按揉，顺时针+逆时针各10圈。<br>✨ 功效：改善上眼皮沉重感，缓解视物模糊。</div>
-                <div class="massage-product">💡 搭配建议：配合「阳光仪」训练后按揉，效果叠加</div>
-            </div>
-            <!-- 4 丝竹空 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">④ 丝竹空</span><span class="massage-tag">👆 眉梢凹陷处</span></div>
-                <div class="massage-loc">📍 怎么找：眉毛尾巴，骨头边上</div>
-                <div class="massage-desc">🧑‍🏫 手法：拇指按揉20-30秒，每日2-3次。<br>✨ 功效：缓解偏头痛，放松眼外肌，尤其适合太阳穴胀痛。</div>
-                <div class="massage-product">💡 搭配建议：老人头痛时可重点按揉</div>
-            </div>
-            <!-- 5 太阳穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">⑤ 太阳穴</span><span class="massage-tag">👆 外眼角外一寸凹陷</span></div>
-                <div class="massage-loc">📍 怎么找：眉梢和外眼角之间，向后一指的凹陷</div>
-                <div class="massage-desc">🧑‍🏫 手法：指腹划圈按揉，力度轻柔，每次20秒。<br>✨ 功效：提神醒脑，消除用眼过度引起的头昏。</div>
-                <div class="massage-product">💡 搭配建议：涂抹「月优视滚珠」后按揉，清凉舒缓</div>
-            </div>
-            <!-- 6 四白穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">⑥ 四白穴</span><span class="massage-tag">👆 眼眶下缘正中直下一横指</span></div>
-                <div class="massage-loc">📍 怎么找：眼睛平视，瞳孔正下方，摸到骨头边缘</div>
-                <div class="massage-desc">🧑‍🏫 手法：食指指腹垂直按压，酸胀感停留3-5秒，重复5次。<br>✨ 功效：改善眼袋、黑眼圈，增加眼周供血。</div>
-                <div class="massage-product">💡 搭配建议：睡前按揉，配合眼贴湿敷</div>
-            </div>
-            <!-- 7 风池穴 -->
-            <div class="massage-card">
-                <div class="massage-header"><span class="massage-name">⑦ 风池穴</span><span class="massage-tag">👆 后颈部两条大筋外缘凹陷</span></div>
-                <div class="massage-loc">📍 怎么找：后脑勺下方，脖子与头发交界处，两个大筋外侧</div>
-                <div class="massage-desc">🧑‍🏫 手法：双手拇指用力向对侧眼睛方向按揉，每次30秒，每日2次。<br>✨ 功效：疏通头部气血，改善视力疲劳、颈椎引起的眼花。</div>
-                <div class="massage-product">💡 搭配建议：老人可请家人帮忙按揉，配合砭石刮痧板效果更佳</div>
+    <!-- 五维护眼体系 -->
+    <section id="five" class="section">
+        <div class="container">
+            <div class="section-title">五维护眼体系</div>
+            <div class="grid">
+                <div class="grid-item"><div class="card"><h3>☀️ 补光</h3><p>模拟自然光照，优化光环境</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🏞️ 补远</h3><p>模拟望远，放松睫状肌</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🍲 补气血</h3><p>药食同源内调，养肝健脾</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🏠 家庭养护</h3><p>居家手法+产品巩固</p></div></div>
+                <div class="grid-item"><div class="card"><h3>📖 科学用眼</h3><p>三个一+三个二十法则</p></div></div>
             </div>
         </div>
+    </section>
 
-        <!-- 打卡 + 跟练入口 -->
-        <div style="text-align: center; margin-top: 32px;">
-            <a href="#contact" class="btn-light" style="background:#2c7a55; color:white;">📥 下载高清穴位图（家庭打印版）</a>
-            <a href="#contact" class="btn-light" style="margin-left: 12px;">🎥 观看跟练视频（手机录制）</a>
-        </div>
-        <div style="background: #eef5ee; border-radius: 28px; padding: 20px; margin-top: 32px; text-align: center;">
-            <div style="font-weight: 700;">📅 家庭护眼打卡计划</div>
-            <div style="margin: 8px 0;">每天陪孩子/老人完成七穴按摩，连续打卡7天到店领好礼</div>
-            <button id="checkinBtn" class="btn-light" style="background:#2c7a55; color:white;">✅ 今日打卡 · 七穴完成</button>
-            <div id="checkinMsg" style="margin-top: 12px; font-size: 0.85rem;"></div>
-        </div>
-    </div>
+    <!-- 核心产品系列 -->
+    <section id="product" class="section" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-title">核心产品系列</div>
+            <div class="section-sub">内调·外护·日常，全方位陪伴</div>
 
-    <!-- 产品墙 -->
-    <div id="products" class="section">
-        <div class="section-title">月优视全系列产品</div>
-        <div class="section-sub">分型养护 · 精准对应</div>
-        <div class="product-series">
-            <div class="series-card"><h3>🌿 内调固本系列</h3><div>从内源强健眼部基础</div><div class="product-items"><span class="product-tag">益生菌</span><span class="product-tag">四神安胃膏</span><span class="product-tag">三葚杞菊膏</span><span class="product-tag">叶黄素软糖</span><span class="product-tag">多维软糖</span></div></div>
-            <div class="series-card"><h3>🔬 外护调境系列</h3><div>优化用眼环境，科技护眼</div><div class="product-items"><span class="product-tag">AI动态变焦镜</span><span class="product-tag">阳光仪</span><span class="product-tag">环境护眼灯</span></div></div>
-            <div class="series-card"><h3>🏠 日常养护系列</h3><div>居家便携，随时放松</div><div class="product-items"><span class="product-tag">星优视眼贴组</span><span class="product-tag">月优视滚珠</span><span class="product-tag">课间护眼卡片</span></div></div>
-        </div>
-    </div>
-
-    <!-- 硒康故事 -->
-    <div id="story" class="section" style="background: #f9fbf7;">
-        <div class="section-title">硒康故事</div>
-        <div class="story-card">
-            <div style="font-size: 1.2rem; font-weight: 700;">我为什么从一位焦虑的父亲，变成视力守护者？</div>
-            <div style="margin-top: 16px; color: #4a6e5c;">“几年前，我女儿查出了100度近视，尝试了各种方法都效果甚微。后来接触到中医砭石与AI动态变焦镜的结合原理，亲自带她坚持养护三个月，眼疲劳明显减少，度数也稳住了。我意识到，很多家长和我一样需要真正的解决方案，于是创立了硒康视力养护中心，希望帮助更多家庭少走弯路。”<br>—— 硒康创始人 张先生</div>
-        </div>
-    </div>
-
-    <!-- 真实案例 -->
-    <div class="section">
-        <div class="section-title">真实案例 · 效果说话</div>
-        <div class="case-card"><div style="font-weight: 700;">👦 小明 (9岁) · 综合防控方案3个月</div><div style="margin-top: 8px;">视疲劳感显著降低，家长反馈“上课注意力更集中了，揉眼睛次数明显减少”。</div></div>
-        <div class="case-card"><div style="font-weight: 700;">👩 李女士 · 实体店店主加入硒康3个月</div><div style="margin-top: 8px;">仅通过眼贴代售和推荐深度体验，获得额外收入8000元，已升级为加盟商。</div></div>
-    </div>
-
-    <!-- 加盟合作 -->
-    <div id="join" class="section">
-        <div class="section-title">🤝 社区合伙 & 品牌加盟</div>
-        <div class="section-sub">0库存 · 全程陪跑 · 商学院支持</div>
-        <div class="partner-grid">
-            <div class="partner-item"><div style="font-weight: 800;">🌸 体验官 · 0成本</div><div style="margin: 12px 0;">推荐好友体验99元养护 → 奖励20元/人；成交套餐返10%佣金。</div></div>
-            <div class="partner-item"><div style="font-weight: 800;">🍃 轻代理 · 990元</div><div>拿1980元产品组合，自用省钱，可退可换。适合宝妈副业。</div></div>
-            <div class="partner-item"><div style="font-weight: 800;">🏆 主推加盟 · 41700元</div><div>全套产品+阳光仪+AI镜+商学院陪跑。2个综合防控客户回本。</div><div style="margin-top: 8px;"><a href="#contact" style="color:#b45f1b;">📞 咨询加盟资料</a></div></div>
-        </div>
-        <div style="margin-top: 40px;">
-            <div class="section-title" style="font-size: 1.5rem;">🏪 异业联盟 · 门店合作</div>
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
-                <div class="product-tag">📦 眼贴代售 → 一盒净利28元</div>
-                <div class="product-tag">📱 扫码引流 → 到店奖励20元/人</div>
-                <div class="product-tag">🎯 仪器上门服务 → 0风险</div>
+            <!-- 内调固本系列 -->
+            <h3 style="margin: 30px 0 15px; color: var(--primary);">🌿 内调固本 · 补气血</h3>
+            <div class="grid">
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/sangqi.jpg" alt="桑椹杞菊膏"></div><h3>桑椹杞菊膏</h3><p class="badge">清肝明目·滋阴补肾</p><p>江苏桑椹+以色列红西柚，配伍菊花决明子。清肝经实热，填补阴虚。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/siwei.jpg" alt="四食安味膏"></div><h3>四食安味膏</h3><p class="badge">健脾养胃·好脾胃好视力</p><p>山楂、山药、茯苓、鸡内金等，消食除胀，健脾祛湿。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yishengjun.jpg" alt="月优视益生菌"></div><h3>月优视复合益生菌</h3><p class="badge">16000亿活菌·肠眼同护</p><p>双歧杆菌、干酪乳杆菌，促进吸收、抑制有害菌。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/ruantang.jpg" alt="蓝莓叶黄素软糖"></div><h3>蓝莓叶黄素软糖</h3><p>专利叶黄素酯，每10克7.5mg，酸甜护眼。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/mmexport1761959107743.jpg" alt="多种维生素软糖"></div><h3>多种维生素软糖</h3><p>含11种维生素，均衡营养。</p></div></div>
             </div>
-            <div style="text-align: center; margin-top: 24px;">优先合作：奥林匹克花园 & 国润城周边商户</div>
+
+            <!-- 外护调境系列 -->
+            <h3 style="margin: 40px 0 15px; color: var(--primary);">✨ 外护调境 · 补光补远</h3>
+            <div class="grid">
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/aijing.jpg" alt="AI动态变焦镜" onerror="this.src='https://placehold.co/400x300?text=AI镜'"></div><h3>AI动态变焦镜</h3><p>智能动态变焦，模拟望远与看近交替，有效舒缓睫状肌，防控近视。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yangguangyi.jpg" alt="阳光仪"></div><h3>阳光仪</h3><p>全光谱模拟自然光，弥补户外光照不足。与红光仪区别：完整自然光波段。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/bianshi.jpg" alt="砭石养护" onerror="this.style.display='none'"></div><h3>砭石经络养护</h3><p>传统砭石手法，疏通眼周经络，深度放松。</p></div></div>
+            </div>
+
+            <!-- 日常养护系列 -->
+            <h3 style="margin: 40px 0 15px; color: var(--primary);">🧴 日常养护 · 家庭必备</h3>
+            <div class="grid">
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yantie.jpg" alt="紫硒亮眸眼贴"></div><h3>紫硒亮眸眼贴</h3><p>植物富硒配方，贴敷15-20分钟，缓解眼干眼涩。</p></div></div>
+                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/huyan_gao.jpg" alt="紫硒明眸护眼膏"></div><h3>紫硒明眸护眼膏</h3><p class="badge">穴位透皮吸收</p><p>涂抹眼周穴位，六大好转反应，改善多种眼部亚健康。</p></div></div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 到店体验表单 -->
-    <div id="contact" class="section">
-        <div class="section-title">📍 咸阳本地 · 到店体验</div>
-        <div class="section-sub">免费视力筛查 | 体验官招募（9岁以下100度内儿童）</div>
-        <div class="form-container">
-            <form id="appointmentForm">
-                <div class="form-group"><input type="text" placeholder="家长姓名" required></div>
-                <div class="form-group"><input type="number" placeholder="孩子年龄" required></div>
-                <div class="form-group"><input type="number" placeholder="当前度数（如有）"></div>
-                <div class="form-group"><input type="tel" placeholder="联系电话" required></div>
-                <div class="form-group"><select><option>预约9.9元快养</option><option>预约99元深度养护</option><option>免费视力筛查</option></select></div>
-                <button type="submit" class="btn-submit">提交预约 → 顾问联系</button>
-            </form>
-            <div style="font-size:0.7rem; text-align:center; margin-top: 12px;">提交后微信会及时联系，门店地址：奥林匹克花园/国润城</div>
+    <!-- 近视科普 + 预防原则 + 远视储备 -->
+    <section id="science" class="section">
+        <div class="container">
+            <div class="section-title">📘 近视防控必修课</div>
+            <div class="two-column">
+                <div class="card">
+                    <h3>🧬 近视是如何形成的？</h3>
+                    <img src="images/mmexport1765697179720.jpg" alt="近视形成图解" style="width:100%; border-radius:20px; margin: 16px 0;">
+                    <p>第一步：睫状肌痉挛 → 第二步：晶状体调节异常 → 第三步：眼轴拉长（正常24mm → 近视26mm）。预防建议：每用眼40分钟休息远眺。</p>
+                </div>
+                <div class="card">
+                    <h3>📊 预防近视的8项原则</h3>
+                    <img src="images/mmexport1755494988431.jpg" alt="预防近视原则" style="width:100%; border-radius:20px; margin-bottom: 16px;">
+                    <p>20-20-20法则、坐姿三个“1”、每天2小时户外、控制电子产品、注意光线、少吃甜食、定期检查、建立屈光档案。</p>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 24px;">
+                <h3>⚠️ 远视储备 vs 远视 — 千万別弄混</h3>
+                <img src="images/mmexport1774832288622.jpg" alt="远视储备科普" style="max-width: 100%; border-radius: 20px; margin: 16px 0;">
+                <p>每个年龄对应正常远视储备值（如4-5岁+2.10D~+2.20D），储备值消耗过快，近视风险增高。远视是病理状态，远视储备是生理缓冲。</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 底部 -->
-    <div class="footer">
-        <div>硒康视力养护运营中心 · 咸阳青少年视力防控服务商</div>
-        <div>微信: xiao15291025301 | 电话: 15291025301</div>
-        <div>© 2025 星优视 | 月优视 联合支持 | 蒿石七穴家庭护眼操 · 老少皆宜</div>
-        <div style="margin-top: 12px; font-size: 0.7rem;">权威背书：本网站科普内容参考国家卫健委《儿童青少年近视防控核心知识》</div>
-    </div>
-</div>
+    <!-- 客户案例 · 益生菌反馈 -->
+    <section class="section" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-title">💚 真实客户反馈</div>
+            <div class="two-column">
+                <div class="card">
+                    <img src="images/mmexport1755146635922.jpg" alt="益生菌案例" style="width:100%; border-radius:20px;">
+                    <p style="margin-top: 12px;">“吃益生菌一个月最大的收获就是再也没有胃疼，浅表性胃炎改善，胃胀反酸消失，真的很神奇！”</p>
+                </div>
+                <div class="card">
+                    <h3>✨ 更多见证</h3>
+                    <p>月优视益生菌帮助改善肠道功能，肠眼同护，间接支持眼部营养吸收。</p>
+                    <img src="images/mmexport1767582037053.jpg" alt="护眼快乐" style="width:100%; border-radius:20px; margin-top: 16px;">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 悬浮客服 -->
-<a href="#" class="float-contact" onclick="copyWechat(); return false;">💬</a>
+    <!-- 紫硒明眸护眼膏 · 穴位图 + 使用反应 -->
+    <section id="ointment" class="section">
+        <div class="container">
+            <div class="section-title">💧 紫硒明眸护眼膏 · 穴位涂抹法</div>
+            <div class="two-column">
+                <div class="card">
+                    <img src="images/xuewei.jpg" alt="面部穴位图" style="width:100%; border-radius:24px;">
+                    <p style="margin-top: 12px;"><strong>眼周9大穴位：</strong>睛明、攒竹、鱼腰、丝竹空、太阳、瞳子髎、球后、承泣、四白。</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ 使用六大反应（好转反应）</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>雾</strong> — 正在给眼睛拨浊</li>
+                        <li><strong>麻</strong> — 正在缓解痛症</li>
+                        <li><strong>辣</strong> — 经络堵塞严重（坚持使用）</li>
+                        <li><strong>热</strong> — 正在疏通经络</li>
+                        <li><strong>凉</strong> — 正在清热解毒</li>
+                        <li><strong>流眼泪</strong> — 正在清理眼部垃圾</li>
+                    </ul>
+                    <p><strong>适用人群：</strong>儿童青少年假性近视、上班族眼干涩、中老年老花眼/飞蚊症等。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-    function copyWechat() {
-        const wechat = "xiao15291025301";
-        navigator.clipboard.writeText(wechat).then(() => {
-            alert("微信号已复制：" + wechat + "\n打开微信添加好友即可。");
-        }).catch(() => {
-            prompt("手动复制微信号:", wechat);
-        });
-    }
+    <!-- 蒿石七穴家庭护眼操 -->
+    <section id="acupoint" class="section" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-title">🌸 蒿石七穴 · 家庭护眼操</div>
+            <div class="section-sub">每天5分钟，家长孩子一起做</div>
+            <div class="acupoint-list">
+                <div class="acupoint-card"><strong>① 睛明穴</strong>（内眼角凹陷）：拇指轻按揉10次，缓解干涩。</div>
+                <div class="acupoint-card"><strong>② 攒竹穴</strong>（眉头凹陷）：拇指推向眉尾8次，消除眼肿。</div>
+                <div class="acupoint-card"><strong>③ 鱼腰穴</strong>（眉毛中点）：食指按揉顺逆各10圈，改善上眼皮疲劳。</div>
+                <div class="acupoint-card"><strong>④ 丝竹空</strong>（眉梢凹陷）：拇指按揉20秒，放松眼外肌。</div>
+                <div class="acupoint-card"><strong>⑤ 太阳穴</strong>（外眼角外一寸）：划圈按揉20秒，提神醒脑。</div>
+                <div class="acupoint-card"><strong>⑥ 四白穴</strong>（眼眶下正中）：垂直按压5秒，重复5次，改善黑眼圈。</div>
+                <div class="acupoint-card"><strong>⑦ 风池穴</strong>（后颈部大筋外）：拇指按向对侧眼睛方向30秒，疏通气血。</div>
+            </div>
+            <div class="checkin-box">
+                <div style="font-size:1.2rem; font-weight:600;">📅 亲子护眼打卡计划</div>
+                <div>每天完成七穴按摩，坚持打卡赢好礼～</div>
+                <button class="checkin-btn" onclick="handleCheckin()" style="background: var(--primary); border: none; padding: 10px 28px; border-radius: 60px; color: white; margin: 12px 0; cursor: pointer;">✅ 今日打卡</button>
+                <div id="checkinMsg"></div>
+                <div style="font-size:0.75rem;">🎁 连续7天打卡，到店领取免费体验券（添加微信兑换）</div>
+            </div>
+        </div>
+    </section>
 
-    // 轮播
-    let currentSlide = 0;
-    const slides = document.getElementById('slides');
-    const dotsContainer = document.getElementById('dots');
-    const slideCount = document.querySelectorAll('.slide').length;
-    function updateDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < slideCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (i === currentSlide) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
+    <!-- 百年传承 · 李良济 -->
+    <section id="heritage" class="section">
+        <div class="container">
+            <div class="section-title">🏆 百年传承 · 中华老字号</div>
+            <div class="grid">
+                <div class="grid-item"><div class="card"><h3>📜 李良济·非遗膏方</h3><p>始创于1914年，江苏省非物质文化遗产膏方制作技艺。</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🔬 院士领衔研发</h3><p>法国欧洲科学院院士李勇教授、清华大学盛林博士等团队。</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🌾 道地药材·全程溯源</h3><p>全国60个核心产区种植基地，一物一码可追溯。</p></div></div>
+                <div class="grid-item"><div class="card"><h3>🏥 名老中医资源</h3><p>苏州六家国医馆，200余位名老中医坐诊。</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 体验套餐 -->
+    <section id="package" class="section" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-title">🧸 门店体验套餐</div>
+            <div class="grid">
+                <div class="grid-item"><div class="card" style="text-align:center;"><h3>🌟 基础体验</h3><div class="price-big">9.9元</div><p>裸眼视力检测+护眼指导+电子手册</p><p>适用3-18岁，每人限1次</p></div></div>
+                <div class="grid-item"><div class="card" style="text-align:center;"><h3>✨ 深度养护</h3><div class="price-big">99元</div><p>砭石疏通+产品试用+方案定制+设备体验</p><p>额外赠送护眼眼贴</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 江湖招募令 + 合伙人 -->
+    <section id="cooperate" class="section">
+        <div class="container">
+            <div class="section-title">🤝 加入我们</div>
+            <div class="two-column">
+                <div class="card">
+                    <img src="images/IMG_20260517_154536.png" alt="江湖招募令" style="width:100%; border-radius:20px; margin-bottom: 16px;">
+                    <h3>招聘视力养护师（8名）</h3>
+                    <p>专职兼职均可，踏实灵巧，待人热情，培训考核后上岗。咨询电话：15291025301</p>
+                </div>
+                <div class="card">
+                    <img src="images/mmexport1771547969189.jpg" alt="招募合伙人" style="width:100%; border-radius:20px; margin-bottom: 16px;">
+                    <h3>寻找合伙人</h3>
+                    <p>勇敢、自信、专业、负责，有行业洞察力和管理能力。收获资金/团队/资源/梦想。</p>
+                    <a href="#shop" class="btn-primary" style="margin-top: 16px; display: inline-block;">立即咨询</a>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 24px; text-align: center;">
+                <h3>创业加盟 · 商学院陪跑</h3>
+                <p>完整「精英商学院」培训体系，从基础手法到门店运营全程陪跑。</p>
+                <p>异业联盟：母婴店、培训机构合作，0库存起步。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 门店信息 -->
+    <section id="shop" class="section" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-title">🏠 门店信息</div>
+            <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <img src="images/mentou.jpg" alt="门店门头" style="width:100%; border-radius:24px; margin-bottom: 20px;">
+                <p><strong>硒康视力养护 · 西安高新二店</strong></p>
+                <p>📍 西安市高新区博士路60号阳光天地购物中心裙楼四楼</p>
+                <p>🕘 营业时间：10:00 — 20:00</p>
+                <p>📞 联系电话：15291025301</p>
+                <p>💡 门店实行全预约制，请提前微信预约。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 硒康视力养护 | 青少年近视防控专业机构 | 中华老字号李良济战略合作伙伴</p>
+        </div>
+    </footer>
+
+    <script>
+        let checkinDays = localStorage.getItem('xikang_checkin') ? parseInt(localStorage.getItem('xikang_checkin')) : 0;
+        let lastCheckin = localStorage.getItem('xikang_last') || '';
+        function updateCheckinUI() {
+            const msgDiv = document.getElementById('checkinMsg');
+            if (msgDiv) {
+                const today = new Date().toDateString();
+                if (lastCheckin === today) msgDiv.innerText = '✅ 今日已完成家庭护眼打卡，明天继续！';
+                else msgDiv.innerText = `📅 累计打卡 ${checkinDays} 天 · 坚持7天到店领好礼`;
+            }
         }
-    }
-    function goToSlide(index) {
-        currentSlide = index;
-        if (slides) slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-        updateDots();
-    }
-    if (slides) {
-        updateDots();
-        setInterval(() => { currentSlide = (currentSlide + 1) % slideCount; goToSlide(currentSlide); }, 5000);
-    }
-
-    // 打卡逻辑（localStorage）
-    let checkinDays = localStorage.getItem('se_checkin') ? parseInt(localStorage.getItem('se_checkin')) : 0;
-    let lastCheckin = localStorage.getItem('se_last') || '';
-    function updateCheckinUI() {
-        const msgDiv = document.getElementById('checkinMsg');
-        if (msgDiv) {
+        function handleCheckin() {
             const today = new Date().toDateString();
-            if (lastCheckin === today) msgDiv.innerText = '✅ 今天已完成家庭护眼打卡，明天继续！';
-            else msgDiv.innerText = `📅 累计打卡 ${checkinDays} 天 · 坚持7天到店领礼品`;
+            if (lastCheckin === today) { alert('今天已经打卡过了～'); return; }
+            checkinDays += 1;
+            localStorage.setItem('xikang_checkin', checkinDays);
+            localStorage.setItem('xikang_last', today);
+            updateCheckinUI();
+            alert(`🎉 打卡成功！已累计打卡 ${checkinDays} 天。\n连续7天可联系客服到店领取免费体验券。`);
         }
-    }
-    document.getElementById('checkinBtn')?.addEventListener('click', () => {
-        const today = new Date().toDateString();
-        if (lastCheckin === today) { alert('今天已经打卡过了～'); return; }
-        checkinDays += 1;
-        localStorage.setItem('se_checkin', checkinDays);
-        localStorage.setItem('se_last', today);
         updateCheckinUI();
-        alert(`🎉 打卡成功！已连续打卡 ${checkinDays} 天。\n连续7天可联系客服到店领取免费体验券。`);
-    });
-    updateCheckinUI();
-
-    // 表单
-    document.getElementById('appointmentForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('预约已提交！顾问会通过您留下的电话或微信联系。');
-        this.reset();
-    });
-</script>
+    </script>
 </body>
 </html>
