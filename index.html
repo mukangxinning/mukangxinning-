@@ -2,217 +2,183 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>硒康视力养护 | 五维护眼·青少年近视防控</title>
-    <meta name="description" content="硒康视力养护，五维护眼体系，中医砭石+现代光学+非遗膏方，专注青少年近视防控。全预约制，西安高新店。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>爱眼星球 | 亲子护眼科普馆</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: 'Segoe UI', 'Noto Sans', system-ui, -apple-system, 'Quicksand', 'Microsoft YaHei', sans-serif;
-            background: #fafef7;
-            color: #2a4d3c;
+            background: #F3F9F0;
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+            color: #2D4A3C;
             line-height: 1.5;
         }
         .container {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 16px;
         }
-        :root {
-            --primary: #5ba06e;
-            --primary-dark: #3d734b;
-            --primary-light: #dff0e3;
-            --accent: #f7b45a;
-            --accent-dark: #e09d3a;
-            --bg-card: #ffffff;
-            --bg-soft: #f9fef7;
-            --text-dark: #2a4d3c;
-            --text-muted: #6f8f7a;
-            --border-radius-card: 28px;
-            --shadow-sm: 0 8px 24px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .header {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--primary-light);
-        }
-        .nav {
+        .navbar {
+            background: #FFFFFFD9;
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 8px 20px;
+            margin-bottom: 20px;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 4px;
-            padding: 12px 0;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .nav li { list-style: none; }
-        .nav a {
-            display: inline-block;
-            padding: 8px 18px;
-            color: var(--primary-dark);
-            font-weight: 500;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #5A9E6E;
+        }
+        .nav-links {
+            display: flex;
+            gap: 16px;
+        }
+        .nav-links a {
             text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.2s;
+            color: #5A6E4A;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
-        .nav a:hover { background: var(--primary-light); }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #E2F0DC;
+        }
         .hero {
-            background: linear-gradient(135deg, #eef7e8 0%, #ffffff 100%);
-            border-radius: 0 0 56px 56px;
-            padding: 60px 20px;
+            background: linear-gradient(145deg, #E8F4E4, #FFFFFF);
+            border-radius: 48px;
+            padding: 32px 24px;
             text-align: center;
+            margin-bottom: 20px;
         }
         .hero h1 {
-            font-size: 2.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 16px;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 28px;
+            font-size: 1.8rem;
+            color: #5A9E6E;
+            margin-bottom: 12px;
         }
         .btn-primary {
-            background: var(--accent);
-            color: #4a2e1a;
-            padding: 12px 32px;
+            background: #F3A683;
+            color: white;
+            border: none;
+            padding: 12px 28px;
             border-radius: 60px;
             font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
             display: inline-block;
             text-decoration: none;
             transition: 0.2s;
+            box-shadow: 0 4px 8px rgba(243,166,131,0.2);
         }
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
+        .btn-primary:active {
+            transform: scale(0.97);
         }
-        .section { padding: 60px 0; }
         .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-        .section-sub {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 28px;
-        }
-        .grid-item {
-            flex: 1 1 calc(25% - 28px);
-            min-width: 220px;
-        }
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius-card);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #edf5e8;
-            height: 100%;
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-4px); }
-        .badge {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            font-size: 0.7rem;
-            padding: 4px 12px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        .product-img {
-            background: #fafefa;
-            border-radius: 24px;
-            height: 160px;
+            font-size: 1.5rem;
+            color: #5A9E6E;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            overflow: hidden;
+            gap: 8px;
         }
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 24px;
-        }
-        .price-big {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #e07c2c;
-        }
-        .two-column {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .col {
-            flex: 1;
-            min-width: 260px;
-        }
-        .acupoint-list {
-            display: flex;
-            flex-direction: column;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
-        .acupoint-card {
-            background: #fefef8;
+        .info-chip {
+            background: #FEF5E8;
             border-radius: 24px;
-            padding: 18px;
-            border-left: 5px solid var(--accent);
-            box-shadow: var(--shadow-sm);
-        }
-        .checkin-box {
-            background: #f1f9ef;
-            border-radius: 48px;
-            padding: 28px;
+            padding: 16px;
             text-align: center;
-            margin-top: 40px;
+        }
+        .reserve-card {
+            background: #FFF7E8;
+            border-left: 8px solid #F3A683;
+        }
+        .reserve-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+        .reserve-table td {
+            padding: 8px;
+            border-bottom: 1px solid #E2D8C0;
+        }
+        .acupoint-img {
+            background: #E8F0E5;
+            border-radius: 24px;
+            padding: 16px;
+            text-align: center;
+            margin: 16px 0;
+        }
+        .acupoint-img img {
+            max-width: 100%;
+            border-radius: 20px;
+            margin-top: 12px;
+        }
+        .checkin-area {
+            background: #E8F4E4;
+            border-radius: 40px;
+            padding: 20px;
+            text-align: center;
+        }
+        .checkin-btn {
+            background: #5A9E6E;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-weight: 600;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 60px;
+            border: 1px solid #DCE8D2;
+            background: white;
+            font-size: 1rem;
         }
         .footer {
-            background: var(--primary-light);
             text-align: center;
-            padding: 32px;
-            border-radius: 40px 40px 0 0;
-            margin-top: 40px;
-            color: var(--primary-dark);
-        }
-        @media (max-width: 768px) {
-            .grid-item { flex: 1 1 calc(50% - 20px); }
-            .hero h1 { font-size: 1.7rem; }
-            .section-title { font-size: 1.6rem; }
-            .nav a { padding: 6px 12px; font-size: 0.8rem; }
-        }
-        @media (max-width: 480px) {
-            .grid-item { flex: 1 1 100%; }
-        }
-        .float-buttons {
-            position: fixed;
-            right: 18px;
-            bottom: 28px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 20px;
+            font-size: 0.75rem;
+            color: #8B9B7C;
         }
         .float-btn {
+            position: fixed;
+            right: 16px;
+            bottom: 30px;
+            background: #5A9E6E;
             width: 52px;
             height: 52px;
-            background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -220,286 +186,218 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 99;
         }
-        .float-btn:hover {
-            transform: scale(1.05);
-            background: var(--primary-dark);
+        .quiz-option {
+            background: white;
+            border: 2px solid #FFDEB3;
+            border-radius: 60px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.1s;
         }
-        .infographic-img {
-            width: 100%;
-            border-radius: 24px;
-            margin-top: 20px;
+        .quiz-option:active {
+            background: #FFE8D0;
+        }
+        @media (max-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="float-buttons">
-        <div class="float-btn" onclick="alert('门店微信/电话：15291025301，欢迎咨询🌿')">💬</div>
-        <div class="float-btn" onclick="alert('全预约制，请提前微信预约～')">📅</div>
+    <div class="float-btn" onclick="showContact()">💬</div>
+    <div class="container">
+        <!-- 导航栏：Logo位置预留 -->
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+                <span class="logo-text">爱眼星球</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#reserve">远视储备</a>
+                <a href="#game">护眼挑战</a>
+                <a href="#checkin">打卡</a>
+                <a href="#consult">评估</a>
+            </div>
+        </div>
+
+        <!-- 首屏 -->
+        <div class="hero" id="home">
+            <div style="font-size: 3rem;">🌱✨</div>
+            <h1>你家孩子的远视储备还剩多少？</h1>
+            <p style="margin: 12px 0;">远视储备是眼睛的“存款”，花太快容易近视。免费测一测，领取专属护眼方案。</p>
+            <a href="#consult" class="btn-primary">📋 立即评估远视储备</a>
+        </div>
+
+        <!-- 远视储备专区（强化展示+图片） -->
+        <div id="reserve" class="card reserve-card">
+            <div class="section-title" style="margin-bottom: 8px;">📊 远视储备 · 孩子的视力银行</div>
+            <p>每个孩子出生自带“远视存款”，3岁时约+200度。随着年龄增长，储备值自然消耗，消耗过快则易近视。</p>
+            <img src="images/mmexport1774832288622.jpg" alt="远视储备参考值" style="width:100%; border-radius: 20px; margin: 12px 0;" onerror="this.style.display='none'">
+            <table class="reserve-table">
+                <tr><td><strong>年龄</strong></td><td><strong>正常远视储备范围</strong></td></tr>
+                <tr><td>4-5岁</td><td>+2.10D ~ +2.20D</td></tr>
+                <tr><td>6-7岁</td><td>+1.75D ~ +2.00D</td></tr>
+                <tr><td>8岁</td><td>+1.50D</td></tr>
+                <tr><td>9岁</td><td>+1.25D</td></tr>
+                <tr><td>10岁</td><td>+1.00D</td></tr>
+                <tr><td>11岁</td><td>+0.75D</td></tr>
+                <tr><td>12岁</td><td>+0.50D</td></tr>
+            </table>
+            <p>💡 远视储备低于同龄标准，提示近视风险增加，需加强户外活动和用眼管理。</p>
+        </div>
+
+        <!-- 户外+习惯核心知识 -->
+        <div class="section-title">📘 护眼必修课</div>
+        <div class="grid-2">
+            <div class="info-chip">🌳 <strong>每日户外2小时</strong><br>自然光刺激多巴胺，抑制眼轴增长</div>
+            <div class="info-chip">⏱️ <strong>20-20-20法则</strong><br>每20分钟看6米外20秒</div>
+            <div class="info-chip">📏 <strong>三个一坐姿</strong><br>眼离一尺，胸离一拳，手离一寸</div>
+            <div class="info-chip">⚠️ <strong>暗·近·久·甜</strong><br>四大伤眼习惯要避开</div>
+        </div>
+
+        <!-- 近视形成图解 -->
+        <div class="card">
+            <div class="section-title" style="margin-bottom: 8px;">🧬 近视是如何形成的？</div>
+            <img src="images/mmexport1765697179720.jpg" alt="近视形成图解" style="width:100%; border-radius: 20px; margin: 12px 0;" onerror="this.style.display='none'">
+            <p>第一步：睫状肌痉挛 → 第二步：晶状体调节异常 → 第三步：眼轴拉长（正常24mm → 近视26mm）。预防建议：每用眼40分钟休息远眺。</p>
+        </div>
+
+        <!-- 中医理念 + 穴位图 -->
+        <div class="card" style="background:#FEF8E8;">
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <span style="font-size: 2rem;">🌿</span>
+                <div><strong>中医说：眼睛是身体的窗户</strong><br>肝血足则目明，脾胃好则营养上达。常按眼周穴位，疏通经络。</div>
+            </div>
+            <div class="acupoint-img">
+                <div style="font-weight: bold; margin-bottom: 12px;">📌 眼周常用穴位</div>
+                <img src="images/xuewei.jpg" alt="眼部穴位图" style="width:100%; border-radius: 20px;" onerror="this.style.display='none'">
+                <p style="margin-top: 12px;">✨ 每天揉按3分钟，闭目放松，缓解视疲劳。</p>
+            </div>
+        </div>
+
+        <!-- 互动问答游戏 -->
+        <div id="game" class="card" style="background:#FFF8EF;">
+            <div style="font-size: 1.3rem; font-weight: bold; text-align: center;">🧸 护眼小挑战</div>
+            <div id="quizQuestion" style="font-weight: bold; margin: 16px 0; text-align: center;">每天户外活动多久对眼睛最好？</div>
+            <div id="quizOptions" style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="quiz-option" data-correct="false">30分钟</div>
+                <div class="quiz-option" data-correct="true">2小时</div>
+                <div class="quiz-option" data-correct="false">1小时</div>
+            </div>
+            <div id="quizFeedback" style="text-align:center; margin-top: 12px; font-size:0.9rem;"></div>
+        </div>
+
+        <!-- 亲子打卡计划 -->
+        <div id="checkin" class="checkin-area">
+            <div style="font-size: 1.5rem;">📅 21天护眼打卡计划</div>
+            <div style="margin: 8px 0;">每天选择一项完成，坚持打卡领奖励～</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 16px 0;">
+                <span style="background: white; border-radius: 30px; padding: 6px 14px;">☀️ 户外活动1h</span>
+                <span style="background: white; border-radius: 30px; padding: 6px 14px;">👀 20-20-20法则</span>
+                <span style="background: white; border-radius: 30px; padding: 6px 14px;">🖐️ 眼周按摩3min</span>
+                <span style="background: white; border-radius: 30px; padding: 6px 14px;">🥗 少吃甜食</span>
+            </div>
+            <button class="checkin-btn" onclick="handleCheckin()">✅ 今日打卡</button>
+            <div id="checkinMsg" style="margin-top: 12px;"></div>
+            <div style="font-size: 0.75rem; margin-top: 8px;">🎁 连续7天打卡 → 到店领取护眼小礼物<br>连续21天 → 赠送《家庭护眼手册》纸质版</div>
+        </div>
+
+        <!-- 强力钩子：免费评估 + 手册 -->
+        <div id="consult" class="card" style="background: #FFF5EA;">
+            <div style="font-size: 2rem; text-align: center;">🎁</div>
+            <h3 style="text-align: center; color:#5A9E6E;">免费领取《远视储备对照表》+ 视力筛查</h3>
+            <p style="text-align: center;">填写信息，顾问发送电子版手册，并为您预约到店免费视力筛查（无推销）</p>
+            <div class="form-group">
+                <input type="number" id="age" placeholder="孩子年龄（3-12岁）">
+            </div>
+            <div class="form-group">
+                <input type="text" id="phone" placeholder="📞 手机/微信号">
+            </div>
+            <button class="btn-primary" style="width: 100%;" onclick="submitForm()">✅ 立即领取</button>
+            <p style="font-size: 0.7rem; text-align: center; margin-top: 12px;">提交后24h内添加微信，发送资料并预约筛查时间</p>
+        </div>
+
+        <div class="footer">
+            <p>© 爱眼星球 | 青少年近视防控科普 | 非医疗行为</p>
+            <p>📞 咨询电话/微信：15291025301</p>
+            <p>📍 西安高新区阳光天地购物中心裙楼四楼（全预约制）</p>
+        </div>
     </div>
 
-    <header class="header">
-        <div class="container">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-                <div style="display: flex; align-items: center;">
-                    <img src="images/logo.png.jpg" alt="硒康视力养护" style="height: 48px; margin-right: 12px;">
-                    <span style="font-weight: 700; font-size: 1.2rem; color: var(--primary-dark);">硒康视力养护</span>
-                </div>
-                <ul class="nav" style="margin: 0;">
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#five">五维护眼</a></li>
-                    <li><a href="#product">产品</a></li>
-                    <li><a href="#science">近视科普</a></li>
-                    <li><a href="#acupoint">七穴手法</a></li>
-                    <li><a href="#heritage">非遗传承</a></li>
-                    <li><a href="#package">体验套餐</a></li>
-                    <li><a href="#cooperate">合作/招募</a></li>
-                    <li><a href="#shop">门店</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero 主视觉 -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>🌱 补光·补远·补气血<br>科学防控青少年近视</h1>
-            <p>五维护眼体系 | 中医砭石+现代光学 | 非遗膏方内调 | 全预约制</p>
-            <a href="#package" class="btn-primary">✨ 预约9.9元基础体验 ✨</a>
-        </div>
-    </section>
-
-    <!-- 五维护眼体系 -->
-    <section id="five" class="section">
-        <div class="container">
-            <div class="section-title">五维护眼体系</div>
-            <div class="grid">
-                <div class="grid-item"><div class="card"><h3>☀️ 补光</h3><p>模拟自然光照，优化光环境</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🏞️ 补远</h3><p>模拟望远，放松睫状肌</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🍲 补气血</h3><p>药食同源内调，养肝健脾</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🏠 家庭养护</h3><p>居家手法+产品巩固</p></div></div>
-                <div class="grid-item"><div class="card"><h3>📖 科学用眼</h3><p>三个一+三个二十法则</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 核心产品系列 -->
-    <section id="product" class="section" style="background: var(--bg-soft);">
-        <div class="container">
-            <div class="section-title">核心产品系列</div>
-            <div class="section-sub">内调·外护·日常，全方位陪伴</div>
-
-            <!-- 内调固本系列 -->
-            <h3 style="margin: 30px 0 15px; color: var(--primary);">🌿 内调固本 · 补气血</h3>
-            <div class="grid">
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/sangqi.jpg.jpg" alt="桑椹杞菊膏"></div><h3>桑椹杞菊膏</h3><p class="badge">清肝明目·滋阴补肾</p><p>江苏桑椹+以色列红西柚，配伍菊花决明子。清肝经实热，填补阴虚。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/siwei.jpg.jpg" alt="四食安味膏"></div><h3>四食安味膏</h3><p class="badge">健脾养胃·好脾胃好视力</p><p>山楂、山药、茯苓、鸡内金等，消食除胀，健脾祛湿。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yishengjun.jpg.jpg" alt="月优视益生菌"></div><h3>月优视复合益生菌</h3><p class="badge">16000亿活菌·肠眼同护</p><p>双歧杆菌、干酪乳杆菌，促进吸收、抑制有害菌。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/ruantang.jpg" alt="蓝莓叶黄素软糖" onerror="this.src='images/mmexport1761959107743.jpg.jpg'"></div><h3>蓝莓叶黄素软糖</h3><p>专利叶黄素酯，每10克7.5mg，酸甜护眼。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/mmexport1761959107743.jpg.jpg" alt="多种维生素软糖"></div><h3>多种维生素软糖</h3><p>含11种维生素，均衡营养。</p></div></div>
-            </div>
-
-            <!-- 外护调境系列 -->
-            <h3 style="margin: 40px 0 15px; color: var(--primary);">✨ 外护调境 · 补光补远</h3>
-            <div class="grid">
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/aijing.jpg.jpg" alt="AI动态变焦镜"></div><h3>AI动态变焦镜</h3><p>智能动态变焦，模拟望远与看近交替，有效舒缓睫状肌，防控近视。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yangguangyi.jpg.jpg" alt="阳光仪"></div><h3>阳光仪</h3><p>全光谱模拟自然光，弥补户外光照不足。与红光仪区别：完整自然光波段。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/bianshi.jpg.jpg" alt="砭石养护"></div><h3>砭石经络养护</h3><p>传统砭石手法，疏通眼周经络，深度放松。</p></div></div>
-            </div>
-
-            <!-- 日常养护系列 -->
-            <h3 style="margin: 40px 0 15px; color: var(--primary);">🧴 日常养护 · 家庭必备</h3>
-            <div class="grid">
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/yantie.jpg.jpg" alt="紫硒亮眸眼贴"></div><h3>紫硒亮眸眼贴</h3><p>植物富硒配方，贴敷15-20分钟，缓解眼干眼涩。</p></div></div>
-                <div class="grid-item"><div class="card"><div class="product-img"><img src="images/huyan_gao.jpg.jpg" alt="紫硒明眸护眼膏"></div><h3>紫硒明眸护眼膏</h3><p class="badge">穴位透皮吸收</p><p>涂抹眼周穴位，六大好转反应，改善多种眼部亚健康。</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 近视科普 + 预防原则 + 远视储备 -->
-    <section id="science" class="section">
-        <div class="container">
-            <div class="section-title">📘 近视防控必修课</div>
-            <div class="two-column">
-                <div class="card">
-                    <h3>🧬 近视是如何形成的？</h3>
-                    <img src="images/mmexport1765697179720.jpg.jpg" alt="近视形成图解" style="width:100%; border-radius:20px; margin: 16px 0;">
-                    <p>第一步：睫状肌痉挛 → 第二步：晶状体调节异常 → 第三步：眼轴拉长（正常24mm → 近视26mm）。预防建议：每用眼40分钟休息远眺。</p>
-                </div>
-                <div class="card">
-                    <h3>📊 预防近视的8项原则</h3>
-                    <img src="images/mmexport1755494988431.jpg.jpg" alt="预防近视原则" style="width:100%; border-radius:20px; margin-bottom: 16px;">
-                    <p>20-20-20法则、坐姿三个“1”、每天2小时户外、控制电子产品、注意光线、少吃甜食、定期检查、建立屈光档案。</p>
-                </div>
-            </div>
-            <div class="card" style="margin-top: 24px;">
-                <h3>⚠️ 远视储备 vs 远视 — 千万别弄混</h3>
-                <img src="images/mmexport1774832288622.jpg.jpg" alt="远视储备科普" style="max-width: 100%; border-radius: 20px; margin: 16px 0;">
-                <p>每个年龄对应正常远视储备值（如4-5岁+2.10D~+2.20D），储备值消耗过快，近视风险增高。远视是病理状态，远视储备是生理缓冲。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 客户案例 · 益生菌反馈 -->
-    <section class="section" style="background: var(--bg-soft);">
-        <div class="container">
-            <div class="section-title">💚 真实客户反馈</div>
-            <div class="two-column">
-                <div class="card">
-                    <img src="images/mmexport1755146635922.jpg.jpg" alt="益生菌案例" style="width:100%; border-radius:20px;">
-                    <p style="margin-top: 12px;">“吃益生菌一个月最大的收获就是再也没有胃疼，浅表性胃炎改善，胃胀反酸消失，真的很神奇！”</p>
-                </div>
-                <div class="card">
-                    <h3>✨ 更多见证</h3>
-                    <p>月优视益生菌帮助改善肠道功能，肠眼同护，间接支持眼部营养吸收。</p>
-                    <img src="images/mmexport1767582037053.jpg.jpg" alt="护眼快乐" style="width:100%; border-radius:20px; margin-top: 16px;">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 紫硒明眸护眼膏 · 穴位图 + 使用反应 -->
-    <section id="ointment" class="section">
-        <div class="container">
-            <div class="section-title">💧 紫硒明眸护眼膏 · 穴位涂抹法</div>
-            <div class="two-column">
-                <div class="card">
-                    <img src="images/xuewei.jpg.jpg" alt="面部穴位图" style="width:100%; border-radius:24px;">
-                    <p style="margin-top: 12px;"><strong>眼周9大穴位：</strong>睛明、攒竹、鱼腰、丝竹空、太阳、瞳子髎、球后、承泣、四白。</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ 使用六大反应（好转反应）</h3>
-                    <ul style="margin-left: 20px;">
-                        <li><strong>雾</strong> — 正在给眼睛拨浊</li>
-                        <li><strong>麻</strong> — 正在缓解痛症</li>
-                        <li><strong>辣</strong> — 经络堵塞严重（坚持使用）</li>
-                        <li><strong>热</strong> — 正在疏通经络</li>
-                        <li><strong>凉</strong> — 正在清热解毒</li>
-                        <li><strong>流眼泪</strong> — 正在清理眼部垃圾</li>
-                    </ul>
-                    <p><strong>适用人群：</strong>儿童青少年假性近视、上班族眼干涩、中老年老花眼/飞蚊症等。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 蒿石七穴家庭护眼操 -->
-    <section id="acupoint" class="section" style="background: var(--bg-soft);">
-        <div class="container">
-            <div class="section-title">🌸 蒿石七穴 · 家庭护眼操</div>
-            <div class="section-sub">每天5分钟，家长孩子一起做</div>
-            <div class="acupoint-list">
-                <div class="acupoint-card"><strong>① 睛明穴</strong>（内眼角凹陷）：拇指轻按揉10次，缓解干涩。</div>
-                <div class="acupoint-card"><strong>② 攒竹穴</strong>（眉头凹陷）：拇指推向眉尾8次，消除眼肿。</div>
-                <div class="acupoint-card"><strong>③ 鱼腰穴</strong>（眉毛中点）：食指按揉顺逆各10圈，改善上眼皮疲劳。</div>
-                <div class="acupoint-card"><strong>④ 丝竹空</strong>（眉梢凹陷）：拇指按揉20秒，放松眼外肌。</div>
-                <div class="acupoint-card"><strong>⑤ 太阳穴</strong>（外眼角外一寸）：划圈按揉20秒，提神醒脑。</div>
-                <div class="acupoint-card"><strong>⑥ 四白穴</strong>（眼眶下正中）：垂直按压5秒，重复5次，改善黑眼圈。</div>
-                <div class="acupoint-card"><strong>⑦ 风池穴</strong>（后颈部大筋外）：拇指按向对侧眼睛方向30秒，疏通气血。</div>
-            </div>
-            <div class="checkin-box">
-                <div style="font-size:1.2rem; font-weight:600;">📅 亲子护眼打卡计划</div>
-                <div>每天完成七穴按摩，坚持打卡赢好礼～</div>
-                <button class="checkin-btn" onclick="handleCheckin()" style="background: var(--primary); border: none; padding: 10px 28px; border-radius: 60px; color: white; margin: 12px 0; cursor: pointer;">✅ 今日打卡</button>
-                <div id="checkinMsg"></div>
-                <div style="font-size:0.75rem;">🎁 连续7天打卡，到店领取免费体验券（添加微信兑换）</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 百年传承 · 李良济 -->
-    <section id="heritage" class="section">
-        <div class="container">
-            <div class="section-title">🏆 百年传承 · 中华老字号</div>
-            <div class="grid">
-                <div class="grid-item"><div class="card"><h3>📜 李良济·非遗膏方</h3><p>始创于1914年，江苏省非物质文化遗产膏方制作技艺。</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🔬 院士领衔研发</h3><p>法国欧洲科学院院士李勇教授、清华大学盛林博士等团队。</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🌾 道地药材·全程溯源</h3><p>全国60个核心产区种植基地，一物一码可追溯。</p></div></div>
-                <div class="grid-item"><div class="card"><h3>🏥 名老中医资源</h3><p>苏州六家国医馆，200余位名老中医坐诊。</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 体验套餐 -->
-    <section id="package" class="section" style="background: var(--bg-soft);">
-        <div class="container">
-            <div class="section-title">🧸 门店体验套餐</div>
-            <div class="grid">
-                <div class="grid-item"><div class="card" style="text-align:center;"><h3>🌟 基础体验</h3><div class="price-big">9.9元</div><p>裸眼视力检测+护眼指导+电子手册</p><p>适用3-18岁，每人限1次</p></div></div>
-                <div class="grid-item"><div class="card" style="text-align:center;"><h3>✨ 深度养护</h3><div class="price-big">99元</div><p>砭石疏通+产品试用+方案定制+设备体验</p><p>额外赠送护眼眼贴</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 江湖招募令 + 合伙人 -->
-    <section id="cooperate" class="section">
-        <div class="container">
-            <div class="section-title">🤝 加入我们</div>
-            <div class="two-column">
-                <div class="card">
-                    <img src="images/IMG_20260517_154536.png.png" alt="江湖招募令" style="width:100%; border-radius:20px; margin-bottom: 16px;">
-                    <h3>招聘视力养护师（8名）</h3>
-                    <p>专职兼职均可，踏实灵巧，待人热情，培训考核后上岗。咨询电话：15291025301</p>
-                </div>
-                <div class="card">
-                    <img src="images/mmexport1771547969189.jpg.jpg" alt="招募合伙人" style="width:100%; border-radius:20px; margin-bottom: 16px;">
-                    <h3>寻找合伙人</h3>
-                    <p>勇敢、自信、专业、负责，有行业洞察力和管理能力。收获资金/团队/资源/梦想。</p>
-                    <a href="#shop" class="btn-primary" style="margin-top: 16px; display: inline-block;">立即咨询</a>
-                </div>
-            </div>
-            <div class="card" style="margin-top: 24px; text-align: center;">
-                <h3>创业加盟 · 商学院陪跑</h3>
-                <p>完整「精英商学院」培训体系，从基础手法到门店运营全程陪跑。</p>
-                <p>异业联盟：母婴店、培训机构合作，0库存起步。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 门店信息 -->
-    <section id="shop" class="section" style="background: var(--bg-soft);">
-        <div class="container">
-            <div class="section-title">🏠 门店信息</div>
-            <div class="card" style="max-width: 700px; margin: 0 auto; text-align: center;">
-                <img src="images/mentou.jpg.jpg" alt="门店门头" style="width:100%; border-radius:24px; margin-bottom: 20px;">
-                <p><strong>硒康视力养护 · 西安高新二店</strong></p>
-                <p>📍 西安市高新区博士路60号阳光天地购物中心裙楼四楼</p>
-                <p>🕘 营业时间：10:00 — 20:00</p>
-                <p>📞 联系电话：15291025301</p>
-                <p>💡 门店实行全预约制，请提前微信预约。</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 硒康视力养护 | 青少年近视防控专业机构 | 中华老字号李良济战略合作伙伴</p>
-        </div>
-    </footer>
-
     <script>
-        let checkinDays = localStorage.getItem('xikang_checkin') ? parseInt(localStorage.getItem('xikang_checkin')) : 0;
-        let lastCheckin = localStorage.getItem('xikang_last') || '';
-        function updateCheckinUI() {
+        // 问答游戏
+        const options = document.querySelectorAll('.quiz-option');
+        const feedbackDiv = document.getElementById('quizFeedback');
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const isCorrect = opt.getAttribute('data-correct') === 'true';
+                if (isCorrect) {
+                    feedbackDiv.innerHTML = '✅ 完全正确！每天日间户外2小时，能有效延缓近视发展！';
+                    feedbackDiv.style.color = '#5A9E6E';
+                } else {
+                    feedbackDiv.innerHTML = '❌ 再想想～ 答案是2小时。自然光刺激多巴胺，是护眼法宝哦！';
+                    feedbackDiv.style.color = '#F3A683';
+                }
+            });
+        });
+
+        // 打卡逻辑
+        let checkinDays = localStorage.getItem('checkinDays') ? parseInt(localStorage.getItem('checkinDays')) : 0;
+        let lastCheckin = localStorage.getItem('lastCheckin') || '';
+        function updateCheckinMsg() {
             const msgDiv = document.getElementById('checkinMsg');
-            if (msgDiv) {
-                const today = new Date().toDateString();
-                if (lastCheckin === today) msgDiv.innerText = '✅ 今日已完成家庭护眼打卡，明天继续！';
-                else msgDiv.innerText = `📅 累计打卡 ${checkinDays} 天 · 坚持7天到店领好礼`;
+            if (!msgDiv) return;
+            const today = new Date().toDateString();
+            if (lastCheckin === today) {
+                msgDiv.innerHTML = '✅ 今天已打卡，明天继续～';
+            } else {
+                msgDiv.innerHTML = `📅 累计打卡 ${checkinDays} 天 · 坚持7天/21天到店领礼物`;
             }
         }
         function handleCheckin() {
             const today = new Date().toDateString();
-            if (lastCheckin === today) { alert('今天已经打卡过了～'); return; }
+            if (lastCheckin === today) {
+                alert('今天已经打卡过了～');
+                return;
+            }
             checkinDays += 1;
-            localStorage.setItem('xikang_checkin', checkinDays);
-            localStorage.setItem('xikang_last', today);
-            updateCheckinUI();
-            alert(`🎉 打卡成功！已累计打卡 ${checkinDays} 天。\n连续7天可联系客服到店领取免费体验券。`);
+            localStorage.setItem('checkinDays', checkinDays);
+            localStorage.setItem('lastCheckin', today);
+            updateCheckinMsg();
+            let msg = `🎉 打卡成功！累计打卡 ${checkinDays} 天。`;
+            if (checkinDays === 7) msg += ' 恭喜！您可到店领取护眼小礼物。';
+            if (checkinDays === 21) msg += ' 太厉害了！请到店领取《家庭护眼手册》纸质版。';
+            alert(msg);
         }
-        updateCheckinUI();
+        updateCheckinMsg();
+
+        // 表单提交
+        function submitForm() {
+            const age = document.getElementById('age').value;
+            const phone = document.getElementById('phone').value.trim();
+            if (!age || age < 3 || age > 12) {
+                alert('请填写孩子年龄（3-12岁）');
+                return;
+            }
+            if (!phone || phone.length < 8) {
+                alert('请留下手机号或微信号');
+                return;
+            }
+            alert('✅ 已收到！顾问会在24小时内添加微信，发送《远视储备对照表》并预约免费视力筛查。感谢您的信任！');
+        }
+
+        function showContact() {
+            alert('📞 咨询电话/微信：15291025301\n📍 地址：西安高新区阳光天地购物中心裙楼四楼\n💡 添加可领护眼礼包');
+        }
     </script>
 </body>
 </html>
