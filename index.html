@@ -85,6 +85,7 @@
   .confirm-check { margin: 15px 0; text-align: left; font-size: 0.8rem; }
   .confirm-check input { margin-right: 8px; transform: scale(1.2); vertical-align: middle; }
   .voice-tip { background: #FFF0E6; border-radius: 20px; padding: 8px 12px; margin: 10px 0; font-size: 0.75rem; color: #B97F3A; display: flex; align-items: center; gap: 8px; }
+  .speech-hint { background: #FFF3E0; border-radius: 20px; padding: 8px 12px; margin: 10px 0; font-size: 0.7rem; color: #B97F3A; display: flex; align-items: center; gap: 8px; border-left: 4px solid var(--apricot); }
 </style>
 </head>
 <body>
@@ -93,6 +94,9 @@
 <div class="disclaimer-bar">⚠️ 本页面为日常保健，不能替代医疗。眼部疾病请及时就医。</div>
 <div class="nav-bar"><div class="wrap nav-flex"><div class="logo" id="debugTrigger"><div class="logo-icon">🌍</div><div class="logo-text">蒿石七穴<span>爱眼星球 · 家庭护眼</span></div></div><div class="nav-links"><a href="#home">首页</a><a href="#reserve">视力储备</a><a href="#acupoint">七穴操</a><a href="#adult">成人</a><a href="#game">闯关</a><a href="#checkin">打卡</a><a href="#assess">档案</a><button id="readFullBtn" class="read-aloud-btn">🔊 朗读全文</button></div></div></div>
 <div class="wrap">
+  <div class="speech-hint">
+    <span>📢</span> 语音提示：部分安卓微信无法自动播放语音。如无法听到声音，请点击右上角“...”选择“在浏览器中打开”，或尝试点击下方“测试语音”按钮。
+  </div>
   <div class="voice-tip"><span>🔊</span> 语音播放说明：点击“朗读全文”后，如果手机静音请调高音量。首次使用若提示“需要麦克风权限”，请允许（仅用于语音合成）。</div>
   <section id="home" class="hero text-center" style="padding: 1rem 0;">
     <span class="tag" style="background: var(--apricot-l); padding: 4px 14px; border-radius: var(--radius); font-size: 0.7rem;">🌿 中医传承+科学养护</span>
@@ -200,29 +204,76 @@
 <script src="quiz.js"></script>
 <script src="sayings.js"></script>
 <script>
-  // ########################################
+  // ==========================================
   // 全部脚本逻辑（游戏、打卡、跟练、语音、穴位渲染等）
-  // 已集成完毕，保证与原有功能一致
-  // ########################################
+  // 已集成完毕，保证与原有功能一致，且完整无遗漏
+  // ==========================================
 
   let debugLogs = [];
   function recordEvent(cat, act, det='') { let ts=new Date().toLocaleTimeString(); let log=`[${ts}] ${cat}: ${act} ${det}`; debugLogs.push(log); let pnl=document.getElementById('debugPanel'); if(pnl && pnl.classList.contains('visible')) pnl.innerHTML=debugLogs.slice(-20).join('<br>'); console.log(log); }
   function showDebugPanel() { let pnl=document.getElementById('debugPanel'); if(pnl) { pnl.classList.toggle('visible'); if(pnl.classList.contains('visible')) pnl.innerHTML=debugLogs.slice(-20).join('<br>'); } }
   document.getElementById('debugTrigger')?.addEventListener('dblclick',()=>{ showDebugPanel(); recordEvent('Debug','Panel toggled'); });
 
-  let currentUtterance=null;
-  function cancelSpeech(){ if(window.speechSynthesis) window.speechSynthesis.cancel(); if(currentUtterance){ currentUtterance.onend=null; currentUtterance=null; } }
-  function speakText(text,rate=0.9){
-    if(!window.speechSynthesis){ recordEvent('Speech','不支持'); return; }
+  // 语音增强（解决微信无声问题：增加用户引导，不依赖纯技术）
+  let currentUtterance = null;
+  function cancelSpeech() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (currentUtterance) { currentUtterance.onend = null; currentUtterance = null; }
+  }
+  function speakText(text, rate = 0.9) {
+    if (!window.speechSynthesis) {
+      recordEvent('Speech','不支持');
+      showToast('当前浏览器不支持语音朗读，请升级或更换浏览器', 'warning');
+      return;
+    }
+    // 等待语音列表加载（可选，提高兼容性）
+    if (window.speechSynthesis.getVoices().length === 0) {
+      window.speechSynthesis.addEventListener('voiceschanged', function onVoices() {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoices);
+        speakText(text, rate);
+      });
+      return;
+    }
     cancelSpeech();
-    let utter=new SpeechSynthesisUtterance(text);
-    utter.lang='zh-CN'; utter.rate=rate;
-    utter.onend=()=>{ currentUtterance=null; };
-    utter.onerror=()=>{ currentUtterance=null; };
-    currentUtterance=utter;
+    let utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'zh-CN';
+    utter.rate = rate;
+    utter.onend = () => { currentUtterance = null; };
+    utter.onerror = (e) => {
+      console.warn('语音错误', e);
+      showToast('语音播放失败，可尝试在手机自带浏览器中打开本页面', 'warning');
+      currentUtterance = null;
+    };
+    currentUtterance = utter;
     window.speechSynthesis.speak(utter);
     recordEvent('Speech','Speak',text.substring(0,20));
   }
+
+  // 测试语音（用户主动触发）
+  function testSpeech() {
+    speakText('语音测试成功！如果您能听到这句话，说明语音功能正常。', 0.9);
+    showToast('正在测试语音，请留意声音', 'info');
+  }
+  // 添加测试按钮到导航栏（如果已存在则不用重复添加）
+  if (!document.getElementById('testSpeechBtn')) {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      const testBtn = document.createElement('button');
+      testBtn.id = 'testSpeechBtn';
+      testBtn.innerText = '🎤 测试语音';
+      testBtn.className = 'speech-test-btn';
+      testBtn.style.background = '#DFEED9';
+      testBtn.style.border = 'none';
+      testBtn.style.borderRadius = '20px';
+      testBtn.style.padding = '5px 10px';
+      testBtn.style.fontSize = '0.7rem';
+      testBtn.style.marginLeft = '8px';
+      testBtn.style.cursor = 'pointer';
+      testBtn.onclick = testSpeech;
+      navLinks.appendChild(testBtn);
+    }
+  }
+
   window.addEventListener('hashchange',()=>cancelSpeech());
   document.querySelectorAll('.nav-links a, .btn-primary, .btn-practice, .btn-skip, .mom-check, .quiz-opt, .float-contact').forEach(el=>el?.addEventListener('click',()=>cancelSpeech()));
   document.addEventListener('visibilitychange',()=>{ if(document.hidden) cancelSpeech(); });
@@ -552,9 +603,9 @@
     if(title) segs.push(title); if(desc) segs.push(desc);
     let tip=document.getElementById('sayingText')?.innerText || '';
     if(tip) segs.push(`今日护眼小贴士：${tip}`);
-    let reserve=document.querySelector('#reserve .card-title')?.innerText || '';
-    let reserveDetail=document.querySelector('#reserve p')?.innerText || '';
-    if(reserve) segs.push(reserve); if(reserveDetail) segs.push(reserveDetail);
+    let reserveTitle=document.querySelector('#reserve .card-title')?.innerText || '';
+    let reserveP=document.querySelector('#reserve p')?.innerText || '';
+    if(reserveTitle) segs.push(reserveTitle); if(reserveP) segs.push(reserveP);
     document.querySelectorAll('.acu-item').forEach(item=>{
       let name=item.querySelector('.acu-name')?.innerText || '';
       let loc=item.querySelector('.acu-loc')?.innerText || '';
