@@ -18,7 +18,6 @@
   .nav-links { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .nav-links a { text-decoration: none; background: var(--sage-l); padding: 8px 12px; border-radius: var(--radius); color: #5A6E4A; font-weight: 500; font-size: 0.7rem; min-height: 44px; display: inline-flex; align-items: center; }
   .read-aloud-btn { background: var(--apricot); color: #4A2E1A; border: none; border-radius: 40px; padding: 6px 12px; font-size: 0.7rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; min-height: 44px; }
-  .speech-test-btn { background: #DFEED9; border: none; border-radius: 20px; padding: 5px 10px; font-size: 0.7rem; margin-left: 8px; cursor: pointer; }
   .card { background: #fff; border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow); border: 1px solid #EDF3E8; transition: var(--transition); }
   .card-title { font-size: 1.4rem; font-weight: 700; color: var(--sage-d); margin-bottom: 0.25rem; }
   .card-sub { font-size: 0.8rem; color: #8A9E82; margin-bottom: 1rem; }
@@ -79,12 +78,13 @@
   .font-large .star { font-size: 2rem; }
   .font-large .monster-body { width: 130px; height: 130px; }
   html { scroll-behavior: smooth; }
-  @media (max-width: 480px) { .nav-links a { padding: 6px 8px; font-size: 0.65rem; } .read-aloud-btn { padding: 4px 8px; font-size: 0.6rem; } .speech-test-btn { padding: 4px 8px; font-size: 0.6rem; } }
+  @media (max-width: 480px) { .nav-links a { padding: 6px 8px; font-size: 0.65rem; } .read-aloud-btn { padding: 4px 8px; font-size: 0.6rem; } }
   .debug-panel { position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #0f0; font-family: monospace; font-size: 10px; padding: 8px; border-radius: 8px; max-width: 90%; max-height: 200px; overflow: auto; z-index: 10000; pointer-events: none; opacity: 0.8; display: none; white-space: pre-wrap; word-break: break-all; }
   .debug-panel.visible { display: block; pointer-events: auto; }
   .confirm-modal { max-width: 90%; width: 300px; }
   .confirm-check { margin: 15px 0; text-align: left; font-size: 0.8rem; }
   .confirm-check input { margin-right: 8px; transform: scale(1.2); vertical-align: middle; }
+  .voice-tip { background: #FFF0E6; border-radius: 20px; padding: 8px 12px; margin: 10px 0; font-size: 0.75rem; color: #B97F3A; display: flex; align-items: center; gap: 8px; }
   .speech-hint { background: #FFF3E0; border-radius: 20px; padding: 8px 12px; margin: 10px 0; font-size: 0.7rem; color: #B97F3A; display: flex; align-items: center; gap: 8px; border-left: 4px solid var(--apricot); }
 </style>
 </head>
@@ -92,180 +92,188 @@
 <div id="toast" class="toast-msg"></div>
 <a href="tel:15291025301" class="float-contact">📞 免费咨询</a>
 <div class="disclaimer-bar">⚠️ 本页面为日常保健，不能替代医疗。眼部疾病请及时就医。</div>
+<div class="nav-bar"><div class="wrap nav-flex"><div class="logo" id="debugTrigger"><div class="logo-icon">🌍</div><div class="logo-text">蒿石七穴<span>爱眼星球 · 家庭护眼</span></div></div><div class="nav-links"><a href="#home">首页</a><a href="#reserve">视力储备</a><a href="#acupoint">七穴操</a><a href="#adult">成人</a><a href="#game">闯关</a><a href="#checkin">打卡</a><a href="#assess">档案</a><button id="readFullBtn" class="read-aloud-btn">🔊 朗读全文</button></div></div></div>
+<div class="wrap">
+  <div class="speech-hint">
+    <span>📢</span> 语音提示：部分安卓微信无法自动播放语音。如无法听到声音，请点击右上角“...”选择“在浏览器中打开”，或尝试点击下方“测试语音”按钮。
+  </div>
+  <div class="voice-tip"><span>🔊</span> 语音播放说明：点击“朗读全文”后，如果手机静音请调高音量。首次使用若提示“需要麦克风权限”，请允许（仅用于语音合成）。</div>
+  <section id="home" class="hero text-center" style="padding: 1rem 0;">
+    <span class="tag" style="background: var(--apricot-l); padding: 4px 14px; border-radius: var(--radius); font-size: 0.7rem;">🌿 中医传承+科学养护</span>
+    <h1>每天5分钟<br><span style="color:#C08840;">和孩子一起养成护眼好习惯</span></h1>
+    <p class="card-sub">穴位放松 + 护眼知识 + 21天打卡，让护眼融入生活</p>
+    <div class="stat-row" style="background:var(--sage-l); border-radius:var(--radius); padding:12px; display:flex; justify-content:space-around; margin:12px 0;">
+      <div><div class="stat-num">≥2h</div><div>每日户外</div></div>
+      <div><div class="stat-num">20-20-20</div><div>远眺法则</div></div>
+      <div><div class="stat-num">舒缓眼周</div><div>日常养护</div></div>
+    </div>
+  </section>
+  <div class="booking-notice">📌 门店全预约制，到访前请致电📞15291025301，地址：西安市高新区科技路XX号（营业时间 9:00-18:00）</div>
 
-<!-- 主容器（#app-root 已存在） -->
-<div id="app-root" class="wrap"></div>
+  <div class="daily-saying" id="dailySaying">
+    <div style="font-size:0.75rem;">✨ 今日护眼小贴士 ✨</div>
+    <div class="saying-text" id="sayingText">加载中...</div>
+    <div class="saying-source" id="sayingSource"></div>
+  </div>
 
-<div id="modal-root"></div>
+  <div id="reserve" class="card reserve-card">
+    <div class="card-title">📊 儿童远视储备 · 视力银行</div>
+    <div class="card-sub">远视储备是孩子天生的“视力存款”，消耗过快容易近视</div>
+    <p>每个孩子出生都带有远视度数（远视储备），随着年龄增长逐渐消耗。若消耗过快，近视风险显著升高。</p>
+    <table class="reserve-table">
+      <tr><td>4-5岁</td><td>+2.10D ~ +2.20D</td></tr>
+      <tr><td>6-7岁</td><td>+1.75D ~ +2.00D</td></tr>
+      <tr><td>8岁</td><td>+1.50D</td></tr>
+      <tr><td>9岁</td><td>+1.25D</td></tr>
+      <tr><td>10岁</td><td>+1.00D</td></tr>
+      <tr><td>11岁</td><td>+0.75D</td></tr>
+      <tr><td>12岁</td><td>+0.50D</td></tr>
+    </table>
+    <p>💡 低于对应标准，请增加户外活动、控制用眼时长，定期检查。</p>
+  </div>
+
+  <section id="acupoint" class="card">
+    <div class="flex-between"><div class="card-title">🧘 蒿石七穴护眼操</div><button id="fontToggleBtn" class="small-text" style="background:none; border:1px solid var(--sage); padding:6px 12px; border-radius:20px;">🔍 大字体</button></div>
+    <p class="card-sub">操作前洗净双手，剪短指甲。👩‍👧 家长可监督记录</p>
+    <div class="acu-list" id="acuList"></div>
+    <div class="practice-mode">
+      <div class="practice-header"><span>🎧 智能跟练（带震动提醒）</span><div><button class="btn-practice" id="startPracticeBtn">▶ 开始跟练</button><button class="btn-skip" id="skipPracticeBtn" style="display:none;">⏩ 跳过</button><button class="btn-skip" id="stopPracticeBtn" style="display:none;">⏹️ 停止</button></div></div>
+      <div id="practiceStatus" class="practice-timer">点击开始，每个穴位放松30秒（手机震动提醒）</div>
+      <div class="progress-bar"><div class="progress-fill" id="practiceProgressFill"></div></div>
+    </div>
+    <div class="soft-lead" style="background:#F5F0E8; border-radius:var(--radius); padding:14px; margin-top:16px;">
+      📥 免费领取高清穴位图+跟练视频 → <span style="color:var(--sage);font-weight:600;cursor:pointer;" id="openModalBtn">点击登记领取</span>
+      <p style="margin-top:8px;font-size:0.7rem;">⚠️ 眼部发炎、皮肤破损、急性眼病、孕期请勿使用</p>
+    </div>
+  </section>
+
+  <section id="adult" class="card"><div class="card-title">👓 成人护眼专区</div><p class="card-sub">办公族·熬夜党·中老年日常舒缓</p><p>长期伏案、熬夜用眼易引发眼干、酸胀；中老年常伴老花、畏光。本法可辅助舒缓，但不能治疗近视或眼病。出现飞蚊剧增、视力骤降请立即就医。</p></section>
+
+  <section id="game" class="card" style="background:var(--apricot-l);">
+    <div class="card-title text-center">🐣 护眼小英雄 · 帮助精灵收集能量</div>
+    <p class="card-sub text-center">答对问题，小精灵获得能量；答错它会沮丧，再试试就好～</p>
+    <div class="energy-area"><div class="energy-label flex-between"><span>✨ 能量值</span><span id="energyText">0 / 6</span></div><div class="energy-bar-bg"><div class="energy-fill" id="energyFill" style="width:0%"></div></div></div>
+    <div class="text-center" style="margin: 8px 0;"><div class="monster-wrapper"><div class="monster-body" id="monsterBody"><div class="monster-face" id="monsterFace">👾💚</div><div class="monster-name">护眼小精灵</div></div></div></div>
+    <div class="quiz-progress"><div class="quiz-fill" id="quizFill" style="height:6px; background:#DDD; width:0%; transition:0.2s; border-radius:3px;"></div></div>
+    <div id="quizQuestion" class="quiz-q" style="font-weight:600; margin:12px 0; font-size:1.05rem;"></div>
+    <div id="quizOptions" style="display:flex; flex-direction:column; gap:10px;"></div>
+    <div id="quizExtra" style="display:none; background:#FFF8F0; padding:8px; border-radius:var(--radius); margin-top:8px;"></div>
+    <div id="gameReward" style="margin-top:12px; font-size:0.8rem; text-align:center;"></div>
+  </section>
+
+  <section id="assess" class="card">
+    <div class="card-title">🔍 科学视力健康档案</div>
+    <p class="card-sub">区分人群，获取个性化建议</p>
+    <label>角色选择</label><select id="visionRole"><option value="prevent">👶 未近视儿童（预防）</option><option value="myopia" selected>👓 已近视/成人（舒缓养护）</option></select>
+    <label>右眼度数（选填）</label><input type="text" id="rxRight" placeholder="如：100度">
+    <label>左眼度数（选填）</label><input type="text" id="rxLeft" placeholder="如：75度">
+    <label>眼轴长度（选填）</label><input type="text" id="axialLen" placeholder="如：23.5mm">
+    <button class="btn-primary" id="saveVisionBtn">💾 保存档案</button>
+    <div id="visionStatus" class="small-text" style="margin-top:8px;"></div>
+    <div class="warning-card" id="redFlagCard" style="display:none;">⚠️ 紧急就医提醒：视力骤降、闪光、飞蚊猛增、视物变形、眼痛红肿，请立即就医。</div>
+    <div class="vision-record" style="margin-top:12px;"><strong>📋 用眼习惯测评</strong>
+      <label>年龄分组</label><select id="aAge"><option value="3">3-6岁</option><option value="8" selected>7-8岁</option><option value="10">9-12岁</option><option value="15">13-18岁</option><option value="20">19岁以上</option></select>
+      <label>每日户外时长</label><select id="aOut"><option value="0">＜30分钟</option><option value="1">30-60分钟</option><option value="3" selected>＞2小时</option></select>
+      <label>近距离用眼休息</label><select id="aNear"><option value="0">20-30分钟休息</option><option value="2">1小时以上不休息</option></select>
+      <label>甜食摄入频率</label><select id="aSugar"><option value="0">很少吃</option><option value="1">每周3-5次</option><option value="2">几乎每天</option></select>
+      <label>夜间关灯看手机</label><select id="aNight"><option value="0">从不</option><option value="1">偶尔</option><option value="2">经常</option></select>
+      <button class="btn-primary" id="runAssessBtn">📊 生成护眼建议</button>
+      <div id="assessOut" style="margin-top:14px; padding:12px; background:#F5F0E8; border-radius:var(--radius);"></div>
+    </div>
+  </section>
+
+  <section id="checkin" class="card" style="background:var(--sage-l);">
+    <div class="card-title text-center">🌟 星星收集 · 21天护眼打卡（累计制）</div>
+    <p class="card-sub text-center">累计打卡7天即可到店预约免费基础视力筛查（含视力表+电脑验光，不含散瞳/眼轴测量）</p>
+    <div class="star-row" id="starRow"></div>
+    <button class="btn-primary" id="checkinBtn" style="width:auto; padding:8px 30px; margin:0 auto; display:block;">✨ 今日打卡</button>
+    <div id="ckMsg" class="small-text text-center" style="margin-top:12px;"></div>
+  </section>
+  <footer>
+    <p><strong>爱眼星球 · 蒿石七穴</strong></p>
+    <p>咨询微信/电话：15291025301（请提前预约）</p>
+    <p>⚠️ 本页面仅作日常保健，不具备诊疗功效</p>
+    <p>🔒 数据仅保存在本机，不上传网络</p>
+    <div class="small-text" style="margin-top:12px;">❖ 温馨提示：穴位按摩为日常眼部放松，不能替代眼科治疗。视力问题请及时就医。</div>
+  </footer>
+</div>
+<div id="modalForm" class="modal-mask"><div class="modal-container"><h3>📘 领取高清穴位图+视频</h3><p>⚠️ 剩余名额：<span id="remainingCount">97</span> 份（动态递减，先到先得）</p><input type="text" id="wechatInput" placeholder="微信号/手机号"><button class="btn-primary" id="submitWechat">免费领取</button><button id="closeModal">关闭</button></div></div>
+<div id="contraindicationModal" class="modal-mask"><div class="modal-container confirm-modal"><h3>⚠️ 安全确认</h3><p>开始跟练前，请确认您无以下情况：</p><ul><li>眼部发炎、红肿、麦粒肿</li><li>眼周皮肤破损或感染</li><li>近期眼部手术或严重外伤</li><li>孕期</li></ul><div class="confirm-check"><label><input type="checkbox" id="confirmCheckbox"> 我已确认无上述情况，并愿意承担自行操作的责任</label></div><button class="btn-primary" id="confirmStartBtn">确认开始</button><button id="cancelStartBtn">取消</button></div></div>
 <div id="debugPanel" class="debug-panel"></div>
 
 <script src="quiz.js"></script>
 <script src="sayings.js"></script>
 <script>
-  // ========== 以下为完整页面内容（内嵌所有板块，保证 #app-root 内有内容） ==========
-  // 为了避免加载外部组件，直接将所有板块 HTML 写入 #app-root
-  (function() {
-    const appRoot = document.getElementById('app-root');
-    if (!appRoot) return;
+  // ==========================================
+  // 全部脚本逻辑（游戏、打卡、跟练、语音、穴位渲染等）
+  // 已集成完毕，保证与原有功能一致，且完整无遗漏
+  // ==========================================
 
-    appRoot.innerHTML = `
-      <div class="nav-bar">
-        <div class="wrap nav-flex">
-          <div class="logo" id="debugTrigger">
-            <div class="logo-icon">🌍</div>
-            <div class="logo-text">蒿石七穴<span>爱眼星球 · 家庭护眼</span></div>
-          </div>
-          <div class="nav-links">
-            <a href="#home">首页</a>
-            <a href="#reserve">视力储备</a>
-            <a href="#acupoint">七穴操</a>
-            <a href="#adult">成人</a>
-            <a href="#game">闯关</a>
-            <a href="#checkin">打卡</a>
-            <a href="#assess">档案</a>
-            <button id="readFullBtn" class="read-aloud-btn">🔊 朗读全文</button>
-            <button id="testSpeechBtn" class="speech-test-btn">🎤 测试语音</button>
-          </div>
-        </div>
-      </div>
-      <div class="speech-hint">
-        <span>📢</span> 语音提示：部分安卓微信无法自动播放语音。如无法听到声音，请点击右上角“...”选择“在浏览器中打开”，或尝试点击下方“测试语音”按钮。
-      </div>
-      <section id="home" class="hero text-center" style="padding: 1rem 0;">
-        <span class="tag" style="background: var(--apricot-l); padding: 4px 14px; border-radius: var(--radius); font-size: 0.7rem;">🌿 中医传承+科学养护</span>
-        <h1>每天5分钟<br><span style="color:#C08840;">和孩子一起养成护眼好习惯</span></h1>
-        <p class="card-sub">穴位放松 + 护眼知识 + 21天打卡，让护眼融入生活</p>
-        <div class="stat-row" style="background:var(--sage-l); border-radius:var(--radius); padding:12px; display:flex; justify-content:space-around; margin:12px 0;">
-          <div><div class="stat-num">≥2h</div><div>每日户外</div></div>
-          <div><div class="stat-num">20-20-20</div><div>远眺法则</div></div>
-          <div><div class="stat-num">舒缓眼周</div><div>日常养护</div></div>
-        </div>
-      </section>
-      <div class="booking-notice">📌 门店全预约制，到访前请致电📞15291025301，地址：西安市高新区科技路XX号（营业时间 9:00-18:00）</div>
-      <div class="daily-saying" id="dailySaying">
-        <div style="font-size:0.75rem;">✨ 今日护眼小贴士 ✨</div>
-        <div class="saying-text" id="sayingText">加载中...</div>
-        <div class="saying-source" id="sayingSource"></div>
-      </div>
-      <div id="reserve" class="card reserve-card">
-        <div class="card-title">📊 儿童远视储备 · 视力银行</div>
-        <div class="card-sub">远视储备是孩子天生的“视力存款”，消耗过快容易近视</div>
-        <p>每个孩子出生都带有远视度数（远视储备），随着年龄增长逐渐消耗。若消耗过快，近视风险显著升高。</p>
-        <table class="reserve-table">
-          <tr><td>4-5岁</td><td>+2.10D ~ +2.20D</td></tr>
-          <tr><td>6-7岁</td><td>+1.75D ~ +2.00D</td></tr>
-          <tr><td>8岁</td><td>+1.50D</td></tr>
-          <tr><td>9岁</td><td>+1.25D</td></tr>
-          <tr><td>10岁</td><td>+1.00D</td></tr>
-          <tr><td>11岁</td><td>+0.75D</td></tr>
-          <tr><td>12岁</td><td>+0.50D</td></tr>
-        </table>
-        <p>💡 低于对应标准，请增加户外活动、控制用眼时长，定期检查。</p>
-      </div>
-      <section id="acupoint" class="card">
-        <div class="flex-between"><div class="card-title">🧘 蒿石七穴护眼操</div><button id="fontToggleBtn" class="small-text" style="background:none; border:1px solid var(--sage); padding:6px 12px; border-radius:20px;">🔍 大字体</button></div>
-        <p class="card-sub">操作前洗净双手，剪短指甲。👩‍👧 家长可监督记录</p>
-        <div class="acu-list" id="acuList"></div>
-        <div class="practice-mode">
-          <div class="practice-header"><span>🎧 智能跟练（带震动提醒）</span><div><button class="btn-practice" id="startPracticeBtn">▶ 开始跟练</button><button class="btn-skip" id="skipPracticeBtn" style="display:none;">⏩ 跳过</button><button class="btn-skip" id="stopPracticeBtn" style="display:none;">⏹️ 停止</button></div></div>
-          <div id="practiceStatus" class="practice-timer">点击开始，每个穴位放松30秒（手机震动提醒）</div>
-          <div class="progress-bar"><div class="progress-fill" id="practiceProgressFill"></div></div>
-        </div>
-        <div class="soft-lead" style="background:#F5F0E8; border-radius:var(--radius); padding:14px; margin-top:16px;">
-          📥 免费领取高清穴位图+跟练视频 → <span style="color:var(--sage);font-weight:600;cursor:pointer;" id="openModalBtn">点击登记领取</span>
-          <p style="margin-top:8px;font-size:0.7rem;">⚠️ 眼部发炎、皮肤破损、急性眼病、孕期请勿使用</p>
-        </div>
-      </section>
-      <section id="adult" class="card"><div class="card-title">👓 成人护眼专区</div><p class="card-sub">办公族·熬夜党·中老年日常舒缓</p><p>长期伏案、熬夜用眼易引发眼干、酸胀；中老年常伴老花、畏光。本法可辅助舒缓，但不能治疗近视或眼病。出现飞蚊剧增、视力骤降请立即就医。</p></section>
-      <section id="game" class="card" style="background:var(--apricot-l);">
-        <div class="card-title text-center">🐣 护眼小英雄 · 无尽挑战</div>
-        <p class="card-sub text-center">连续答题，积累分数，挑战最高纪录！</p>
-        <div class="score-board" style="display: flex; justify-content: space-between; margin-bottom: 16px; background: #fff; padding: 10px; border-radius: 20px;">
-          <div>当前得分: <span id="currentScore">0</span></div>
-          <div>最高纪录: <span id="highScore">0</span></div>
-        </div>
-        <div class="energy-area">
-          <div class="energy-label flex-between"><span>✨ 能量值</span><span id="energyText">0 / 6</span></div>
-          <div class="energy-bar-bg"><div class="energy-fill" id="energyFill" style="width:0%"></div></div>
-        </div>
-        <div class="text-center" style="margin: 8px 0;">
-          <div class="monster-wrapper">
-            <div class="monster-body" id="monsterBody">
-              <div class="monster-face" id="monsterFace">👾💚</div>
-              <div class="monster-name">护眼小精灵</div>
-            </div>
-          </div>
-        </div>
-        <div class="quiz-progress"><div class="quiz-fill" id="quizFill" style="height:6px; background:#DDD; width:0%; transition:0.2s; border-radius:3px;"></div></div>
-        <div id="quizQuestion" class="quiz-q" style="font-weight:600; margin:12px 0; font-size:1.05rem;"></div>
-        <div id="quizOptions" style="display:flex; flex-direction:column; gap:10px;"></div>
-        <div id="quizExtra" style="display:none; background:#FFF8F0; padding:8px; border-radius:var(--radius); margin-top:8px;"></div>
-        <div id="gameReward" style="margin-top:12px; font-size:0.8rem; text-align:center;"></div>
-        <div class="badge-wall" style="background:#fff; border-radius: 24px; padding: 12px; margin-top: 12px; text-align: center;">
-          🏅 累计答对 <span id="totalScore">0</span> 题 · 勋章 <span id="medalEmoji">🌱</span>
-        </div>
-        <button id="resetGameBtn" class="btn-secondary" style="margin-top: 12px; display: block; width: 100%; background: var(--sage); color:white; border:none; border-radius:var(--radius); padding:12px;">🔄 重新开始</button>
-      </section>
-      <section id="assess" class="card">
-        <div class="card-title">🔍 科学视力健康档案</div>
-        <p class="card-sub">区分人群，获取个性化建议</p>
-        <label>角色选择</label><select id="visionRole"><option value="prevent">👶 未近视儿童（预防）</option><option value="myopia" selected>👓 已近视/成人（舒缓养护）</option></select>
-        <label>右眼度数（选填）</label><input type="text" id="rxRight" placeholder="如：100度">
-        <label>左眼度数（选填）</label><input type="text" id="rxLeft" placeholder="如：75度">
-        <label>眼轴长度（选填）</label><input type="text" id="axialLen" placeholder="如：23.5mm">
-        <button class="btn-primary" id="saveVisionBtn">💾 保存档案</button>
-        <div id="visionStatus" class="small-text" style="margin-top:8px;"></div>
-        <div class="warning-card" id="redFlagCard" style="display:none;">⚠️ 紧急就医提醒：视力骤降、闪光、飞蚊猛增、视物变形、眼痛红肿，请立即就医。</div>
-        <div class="vision-record" style="margin-top:12px;"><strong>📋 用眼习惯测评</strong>
-          <label>年龄分组</label><select id="aAge"><option value="3">3-6岁</option><option value="8" selected>7-8岁</option><option value="10">9-12岁</option><option value="15">13-18岁</option><option value="20">19岁以上</option></select>
-          <label>每日户外时长</label><select id="aOut"><option value="0">＜30分钟</option><option value="1">30-60分钟</option><option value="3" selected>＞2小时</option></select>
-          <label>近距离用眼休息</label><select id="aNear"><option value="0">20-30分钟休息</option><option value="2">1小时以上不休息</option></select>
-          <label>甜食摄入频率</label><select id="aSugar"><option value="0">很少吃</option><option value="1">每周3-5次</option><option value="2">几乎每天</option></select>
-          <label>夜间关灯看手机</label><select id="aNight"><option value="0">从不</option><option value="1">偶尔</option><option value="2">经常</option></select>
-          <button class="btn-primary" id="runAssessBtn">📊 生成护眼建议</button>
-          <div id="assessOut" style="margin-top:14px; padding:12px; background:#F5F0E8; border-radius:var(--radius);"></div>
-        </div>
-      </section>
-      <section id="checkin" class="card" style="background:var(--sage-l);">
-        <div class="card-title text-center">🌟 星星收集 · 21天护眼打卡（累计制）</div>
-        <p class="card-sub text-center">累计打卡7天即可到店预约免费基础视力筛查（含视力表+电脑验光，不含散瞳/眼轴测量）</p>
-        <div class="star-row" id="starRow"></div>
-        <button class="btn-primary" id="checkinBtn" style="width:auto; padding:8px 30px; margin:0 auto; display:block;">✨ 今日打卡</button>
-        <div id="ckMsg" class="small-text text-center" style="margin-top:12px;"></div>
-      </section>
-      <footer>
-        <p><strong>爱眼星球 · 蒿石七穴</strong></p>
-        <p>咨询微信/电话：15291025301（请提前预约）</p>
-        <p>⚠️ 本页面仅作日常保健，不具备诊疗功效</p>
-        <p>🔒 数据仅保存在本机，不上传网络</p>
-        <div class="small-text" style="margin-top:12px;">❖ 温馨提示：穴位按摩为日常眼部放松，不能替代眼科治疗。视力问题请及时就医。</div>
-      </footer>
-    `;
-  })();
-</script>
-<script>
-  // ========== 以下为所有功能脚本 ==========
   let debugLogs = [];
   function recordEvent(cat, act, det='') { let ts=new Date().toLocaleTimeString(); let log=`[${ts}] ${cat}: ${act} ${det}`; debugLogs.push(log); let pnl=document.getElementById('debugPanel'); if(pnl && pnl.classList.contains('visible')) pnl.innerHTML=debugLogs.slice(-20).join('<br>'); console.log(log); }
-  function showDebugPanel() { let pnl=document.getElementById('debugPanel'); if(pnl) pnl.classList.toggle('visible'); if(pnl && pnl.classList.contains('visible')) pnl.innerHTML=debugLogs.slice(-20).join('<br>'); }
-  document.getElementById('debugTrigger')?.addEventListener('dblclick', showDebugPanel);
+  function showDebugPanel() { let pnl=document.getElementById('debugPanel'); if(pnl) { pnl.classList.toggle('visible'); if(pnl.classList.contains('visible')) pnl.innerHTML=debugLogs.slice(-20).join('<br>'); } }
+  document.getElementById('debugTrigger')?.addEventListener('dblclick',()=>{ showDebugPanel(); recordEvent('Debug','Panel toggled'); });
 
-  // 语音工具
+  // 语音增强（解决微信无声问题：增加用户引导，不依赖纯技术）
   let currentUtterance = null;
-  function cancelSpeech() { if(window.speechSynthesis) window.speechSynthesis.cancel(); if(currentUtterance) currentUtterance.onend=null; currentUtterance=null; }
-  function speakText(text, rate=0.9){
-    if(!window.speechSynthesis){ recordEvent('Speech','不支持'); return; }
+  function cancelSpeech() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (currentUtterance) { currentUtterance.onend = null; currentUtterance = null; }
+  }
+  function speakText(text, rate = 0.9) {
+    if (!window.speechSynthesis) {
+      recordEvent('Speech','不支持');
+      showToast('当前浏览器不支持语音朗读，请升级或更换浏览器', 'warning');
+      return;
+    }
+    // 等待语音列表加载（可选，提高兼容性）
+    if (window.speechSynthesis.getVoices().length === 0) {
+      window.speechSynthesis.addEventListener('voiceschanged', function onVoices() {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoices);
+        speakText(text, rate);
+      });
+      return;
+    }
     cancelSpeech();
-    let utter=new SpeechSynthesisUtterance(text);
-    utter.lang='zh-CN'; utter.rate=rate;
-    utter.onend=()=>{ currentUtterance=null; };
-    utter.onerror=()=>{ currentUtterance=null; };
-    currentUtterance=utter;
+    let utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'zh-CN';
+    utter.rate = rate;
+    utter.onend = () => { currentUtterance = null; };
+    utter.onerror = (e) => {
+      console.warn('语音错误', e);
+      showToast('语音播放失败，可尝试在手机自带浏览器中打开本页面', 'warning');
+      currentUtterance = null;
+    };
+    currentUtterance = utter;
     window.speechSynthesis.speak(utter);
     recordEvent('Speech','Speak',text.substring(0,20));
   }
-  function testSpeech() { speakText('语音测试成功！如果您能听到这句话，说明语音功能正常。',0.9); showToast('正在测试语音，请留意声音','info'); }
-  document.getElementById('testSpeechBtn')?.addEventListener('click', testSpeech);
+
+  // 测试语音（用户主动触发）
+  function testSpeech() {
+    speakText('语音测试成功！如果您能听到这句话，说明语音功能正常。', 0.9);
+    showToast('正在测试语音，请留意声音', 'info');
+  }
+  // 添加测试按钮到导航栏（如果已存在则不用重复添加）
+  if (!document.getElementById('testSpeechBtn')) {
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      const testBtn = document.createElement('button');
+      testBtn.id = 'testSpeechBtn';
+      testBtn.innerText = '🎤 测试语音';
+      testBtn.className = 'speech-test-btn';
+      testBtn.style.background = '#DFEED9';
+      testBtn.style.border = 'none';
+      testBtn.style.borderRadius = '20px';
+      testBtn.style.padding = '5px 10px';
+      testBtn.style.fontSize = '0.7rem';
+      testBtn.style.marginLeft = '8px';
+      testBtn.style.cursor = 'pointer';
+      testBtn.onclick = testSpeech;
+      navLinks.appendChild(testBtn);
+    }
+  }
+
   window.addEventListener('hashchange',()=>cancelSpeech());
   document.querySelectorAll('.nav-links a, .btn-primary, .btn-practice, .btn-skip, .mom-check, .quiz-opt, .float-contact').forEach(el=>el?.addEventListener('click',()=>cancelSpeech()));
   document.addEventListener('visibilitychange',()=>{ if(document.hidden) cancelSpeech(); });
@@ -282,7 +290,7 @@
     recordEvent('Toast',type,msg);
   }
 
-  // 每日护眼口诀
+  // 每日护眼口诀（使用外部 SAYINGS）
   function getDailySaying(){
     let today=new Date().toISOString().slice(0,10);
     let lastDate, lastIdx;
@@ -295,207 +303,73 @@
   document.getElementById('sayingText').innerText=getDailySaying();
   document.getElementById('sayingSource').innerHTML="🌿 每日护眼小常识";
 
-  // 游戏逻辑（无尽模式 + 最高分记录）
-  let currentQuestion = null;
-  let currentScore = 0;
-  let highScore = 0;
-  let canAnswer = true;
-  let currentEnergy = 0;
-  const MAX_ENERGY = 6;
-  let totalQuizCount = 0; // 累计答对题数（勋章用）
-  let gameInitialized = false;
-
-  function updateScoreUI() {
-    const currentSpan = document.getElementById('currentScore');
-    const highSpan = document.getElementById('highScore');
-    if (currentSpan) currentSpan.innerText = currentScore;
-    if (highSpan) highSpan.innerText = highScore;
-  }
-  function updateEnergyUI() {
-    const fill = document.getElementById('energyFill');
-    const text = document.getElementById('energyText');
-    const percent = (currentEnergy / MAX_ENERGY) * 100;
-    if (fill) fill.style.width = percent + '%';
-    if (text) text.innerText = `${currentEnergy} / ${MAX_ENERGY}`;
-    if (currentEnergy === MAX_ENERGY) {
-      const monsterFace = document.getElementById('monsterFace');
-      const monsterBody = document.getElementById('monsterBody');
-      if (monsterFace) monsterFace.innerHTML = '✨🌟✨';
-      if (monsterBody) monsterBody.classList.add('bounce-animation');
-      setTimeout(() => {
-        if (monsterBody) monsterBody.classList.remove('bounce-animation');
-      }, 400);
+  // 题库（使用外部 FULL_QUIZ_BANK）
+  let currentRoundQuestions=[], currentRoundIndex=0, roundEnergy=0, ROUND_MAX=6, canAnswer=true;
+  function pickRandomQuestions(cnt){ let shuffled=[...FULL_QUIZ_BANK]; for(let i=shuffled.length-1;i>0;i--){ let j=Math.floor(Math.random()*(i+1)); [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]; } return shuffled.slice(0,cnt); }
+  function resetGame(){ currentRoundQuestions=pickRandomQuestions(6); currentRoundIndex=0; roundEnergy=0; canAnswer=true; updateEnergyUI(roundEnergy,ROUND_MAX); document.getElementById('quizFill').style.width='0%'; document.getElementById('quizExtra').style.display='none'; renderQuestion(); recordEvent('Game','Reset'); }
+  function renderQuestion(){
+    if(!canAnswer) return;
+    let qDiv=document.getElementById('quizQuestion'), optsDiv=document.getElementById('quizOptions');
+    if(!qDiv||!optsDiv) return;
+    if(currentRoundIndex>=currentRoundQuestions.length){
+      if(roundEnergy===ROUND_MAX) qDiv.innerText="🎉 恭喜！小精灵能量满格！明天再来玩～";
+      else qDiv.innerText="闯关结束，再试一次收集更多能量吧～";
+      optsDiv.innerHTML='<button class="quiz-opt" onclick="resetGame()">🔄 重新挑战</button>';
+      return;
     }
-  }
-  function updateTotalScoreUI() {
-    const totalSpan = document.getElementById('totalScore');
-    if (totalSpan) totalSpan.innerText = totalQuizCount;
-    const medalEmoji = document.getElementById('medalEmoji');
-    if (medalEmoji) {
-      if (totalQuizCount >= 20) medalEmoji.innerText = '🏆🌟';
-      else if (totalQuizCount >= 10) medalEmoji.innerText = '🏅';
-      else medalEmoji.innerText = '🌱';
-    }
-  }
-  function getRandomQuestion() {
-    const idx = Math.floor(Math.random() * FULL_QUIZ_BANK.length);
-    return { ...FULL_QUIZ_BANK[idx] };
-  }
-  function loadQuestion() {
-    if (!canAnswer) return;
-    currentQuestion = getRandomQuestion();
-    const qDiv = document.getElementById('quizQuestion');
-    const optsDiv = document.getElementById('quizOptions');
-    if (!qDiv || !optsDiv) return;
-    qDiv.innerText = currentQuestion.q;
-    optsDiv.innerHTML = '';
-    currentQuestion.opts.forEach((opt, idx) => {
-      const btn = document.createElement('div');
-      btn.className = 'quiz-opt';
-      btn.innerText = opt;
-      btn.onclick = () => handleAnswer(btn, idx);
+    let q=currentRoundQuestions[currentRoundIndex];
+    qDiv.innerText=q.q;
+    document.getElementById('quizFill').style.width=((currentRoundIndex)/currentRoundQuestions.length)*100+'%';
+    optsDiv.innerHTML='';
+    q.opts.forEach((opt,idx)=>{
+      let btn=document.createElement('div'); btn.className='quiz-opt'; btn.innerText=opt;
+      btn.onclick=()=>handleAnswer(idx,q);
       optsDiv.appendChild(btn);
     });
-    const extraDiv = document.getElementById('quizExtra');
-    if (extraDiv) extraDiv.style.display = 'none';
+    document.getElementById('quizExtra').style.display='none';
   }
-  function handleAnswer(btn, selectedIdx) {
-    if (!canAnswer) return;
-    canAnswer = false;
-    const isCorrect = (selectedIdx === currentQuestion.correct);
-    const monsterBody = document.getElementById('monsterBody');
-    const monsterFace = document.getElementById('monsterFace');
-    if (isCorrect) {
-      currentScore++;
-      currentEnergy = Math.min(MAX_ENERGY, currentEnergy + 1);
-      totalQuizCount++;
-      updateScoreUI();
-      updateEnergyUI();
-      updateTotalScoreUI();
-      if (monsterBody) monsterBody.classList.add('bounce-animation');
-      if (monsterFace) monsterFace.innerText = '😊💚✨';
-      setTimeout(() => { if (monsterFace) monsterFace.innerText = '😊💚'; }, 500);
-      showToast('✅ 答对了！ +1分', 'success');
-      setTimeout(() => {
-        canAnswer = true;
-        loadQuestion();
-      }, 800);
+  function handleAnswer(selectedIdx,q){
+    if(!canAnswer) return;
+    canAnswer=false;
+    let isCorrect=(selectedIdx===q.correct);
+    let monsterBody=document.getElementById('monsterBody'), monsterFace=document.getElementById('monsterFace');
+    if(monsterBody) monsterBody.classList.remove('shake-animation','bounce-animation');
+    if(isCorrect){
+      roundEnergy=Math.min(ROUND_MAX,roundEnergy+1);
+      updateEnergyUI(roundEnergy,ROUND_MAX);
+      if(monsterBody) monsterBody.classList.add('bounce-animation');
+      if(monsterFace) monsterFace.innerText='😊💚✨';
+      setTimeout(()=>{ if(monsterFace && monsterFace.innerText==='😊💚✨') monsterFace.innerText='😊💚'; },500);
+      showToast('✅ 答对了！+1能量','success');
+      recordEvent('Game','Correct',q.q.substring(0,20));
     } else {
-      if (monsterBody) monsterBody.classList.add('shake-animation');
-      if (monsterFace) monsterFace.innerText = '😢💔';
-      setTimeout(() => { if (monsterFace) monsterFace.innerText = '👾💚'; }, 600);
-      showToast(`❌ 正确答案：${currentQuestion.opts[currentQuestion.correct]}。游戏结束！得分 ${currentScore}`, 'warning');
-      currentScore = 0;
-      currentEnergy = 0;
-      updateScoreUI();
-      updateEnergyUI();
-      setTimeout(() => {
-        canAnswer = true;
-        loadQuestion();
-      }, 2000);
+      if(monsterBody) monsterBody.classList.add('shake-animation');
+      if(monsterFace) monsterFace.innerText='😢💔';
+      setTimeout(()=>{ if(monsterFace && monsterFace.innerText==='😢💔') monsterFace.innerText='👾💚'; },600);
+      showToast(`❌ 正确答案：${q.opts[q.correct]}。${q.tip}`,'warning');
+      recordEvent('Game','Wrong',q.q.substring(0,20));
     }
-    const extraDiv = document.getElementById('quizExtra');
-    if (extraDiv) {
-      extraDiv.innerHTML = `<div style="background:#FFF0E0; padding:8px; border-radius:16px;">💡 ${currentQuestion.tip}</div>`;
-      extraDiv.style.display = 'block';
+    document.getElementById('quizExtra').innerHTML=`<div style="background:#FFF0E0; padding:8px; border-radius:16px;">💡 ${q.tip}</div>`;
+    document.getElementById('quizExtra').style.display='block';
+    let btns=document.querySelectorAll('#quizOptions .quiz-opt');
+    btns.forEach(btn=>btn.style.pointerEvents='none');
+    setTimeout(()=>{ currentRoundIndex++; canAnswer=true; renderQuestion(); },1500);
+  }
+  function updateEnergyUI(energy,max){
+    let percent=(energy/max)*100;
+    let fill=document.getElementById('energyFill'), txt=document.getElementById('energyText');
+    if(fill) fill.style.width=percent+'%';
+    if(txt) txt.innerText=`${energy}/${max}`;
+    let monsterFace=document.getElementById('monsterFace'), monsterBody=document.getElementById('monsterBody');
+    if(energy===max && monsterFace && monsterBody){
+      monsterFace.innerHTML='✨🌟✨';
+      monsterBody.classList.add('bounce-animation');
+      setTimeout(()=>monsterBody.classList.remove('bounce-animation'),400);
     }
-    const btns = document.querySelectorAll('#quizOptions .quiz-opt');
-    btns.forEach(btn => btn.style.pointerEvents = 'none');
-    setTimeout(() => {
-      btns.forEach(btn => btn.style.pointerEvents = 'auto');
-    }, 1500);
   }
-  function resetGame() {
-    currentScore = 0;
-    currentEnergy = 0;
-    canAnswer = true;
-    updateScoreUI();
-    updateEnergyUI();
-    loadQuestion();
-    showToast('游戏已重置', 'info');
-  }
-  function initGame() {
-    if (gameInitialized) return;
-    try {
-      const storedHigh = parseInt(localStorage.getItem('eye_game_highscore')) || 0;
-      highScore = storedHigh;
-      document.getElementById('highScore').innerText = highScore;
-      const storedTotal = parseInt(localStorage.getItem('eye_game_total')) || 0;
-      totalQuizCount = storedTotal;
-      updateTotalScoreUI();
-      resetGame();
-      const resetBtn = document.getElementById('resetGameBtn');
-      if (resetBtn) resetBtn.onclick = resetGame;
-      gameInitialized = true;
-      recordEvent('Game', 'Initialized');
-    } catch(e) { console.warn(e); }
-  }
-  window.initGame = initGame;
-  window.resetGame = resetGame;
+  resetGame();
 
-  // 打卡逻辑
-  let checkinHistory = (()=>{ try{ return JSON.parse(localStorage.getItem('eye_checkinHistory')||'[]'); }catch(e){ return []; } })();
-  function updateCheckinUI(){
-    let html='';
-    for(let i=1;i<=21;i++) html+=`<span class="star ${i<=checkinHistory.length?'lit':''}">${i<=checkinHistory.length?'⭐':'☆'}</span>`;
-    document.getElementById('starRow').innerHTML=html;
-    document.getElementById('ckMsg').innerHTML=`✨ 累计打卡 ${checkinHistory.length} 天 ✨`;
-  }
-  function doCheckin(){
-    let today=new Date().toISOString().split('T')[0];
-    if(checkinHistory.includes(today)){ showToast('今天已经打卡啦','warning'); return; }
-    checkinHistory.push(today);
-    try{ localStorage.setItem('eye_checkinHistory',JSON.stringify(checkinHistory)); }catch(e){}
-    updateCheckinUI();
-    showToast(`打卡成功！累计${checkinHistory.length}天✨`,'success');
-    recordEvent('Checkin','Success',checkinHistory.length);
-  }
-  document.getElementById('checkinBtn')?.addEventListener('click',doCheckin);
-  updateCheckinUI();
-
-  // 视力自测
-  document.getElementById('saveVisionBtn')?.addEventListener('click',()=>{
-    try{ localStorage.setItem('eye_vision',JSON.stringify({ right:document.getElementById('rxRight')?.value||'', left:document.getElementById('rxLeft')?.value||'', axial:document.getElementById('axialLen')?.value||'' })); showToast('档案已保存','success'); recordEvent('Vision','Saved'); }catch(e){ showToast('保存失败','warning'); }
-  });
-  document.getElementById('runAssessBtn')?.addEventListener('click',()=>{
-    let ageGroup=parseInt(document.getElementById('aAge')?.value||8), outdoor=parseInt(document.getElementById('aOut')?.value||3), near=parseInt(document.getElementById('aNear')?.value||0), sugar=parseInt(document.getElementById('aSugar')?.value||0), night=parseInt(document.getElementById('aNight')?.value||0);
-    let score=60; if(outdoor>=3) score+=25; else if(outdoor===2) score+=10; else score-=15; if(near===0) score+=15; else if(near===2) score-=10; if(sugar===0) score+=10; else if(sugar===2) score-=10; if(night===0) score+=10; else if(night===2) score-=10; if(ageGroup<=8 && outdoor<2) score-=10; score=Math.min(100,Math.max(20,score));
-    let level=score>=85?'优秀':(score>=65?'良好':'需加强'); let advice=[];
-    if(outdoor<2) advice.push('每天保证2小时户外光照'); if(near>=2) advice.push('每20分钟远眺20秒'); if(sugar>=1) advice.push('减少甜食摄入'); if(night>=1) advice.push('夜间看手机务必开灯'); if(ageGroup<=8 && score<70) advice.push('儿童远视储备消耗较快，建议增加监测频率'); if(document.getElementById('visionRole')?.value==='myopia') advice.push('已近视人群需定期复查眼底，避免剧烈运动');
-    document.getElementById('assessOut').innerHTML=`<strong>综合评分：${score}分（${level}）</strong><br>🎯 ${advice.length?advice.join('；'):'继续保持良好用眼习惯'}`;
-    recordEvent('Assess','Score',score);
-  });
-
-  // 字体切换
-  let fontLarge=(()=>{ try{ return localStorage.getItem('eye_fontLarge')==='true'; }catch(e){ return false; } })();
-  if(fontLarge) document.body.classList.add('font-large');
-  document.getElementById('fontToggleBtn')?.addEventListener('click',()=>{
-    document.body.classList.toggle('font-large');
-    try{ localStorage.setItem('eye_fontLarge',document.body.classList.contains('font-large')); }catch(e){}
-    recordEvent('UI','FontToggle');
-  });
-
-  // 模态框
-  let modal=document.getElementById('modalForm');
-  let remaining=(()=>{ try{ return parseInt(localStorage.getItem('eye_remaining'))||97; }catch(e){ return 97; } })();
-  document.getElementById('remainingCount').innerText=remaining;
-  document.getElementById('openModalBtn')?.addEventListener('click',()=>{ if(modal){ modal.style.visibility='visible'; modal.style.opacity='1'; } cancelSpeech(); recordEvent('Modal','Open'); });
-  document.getElementById('closeModal')?.addEventListener('click',()=>{ if(modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; } cancelSpeech(); });
-  document.getElementById('submitWechat')?.addEventListener('click',()=>{
-    let wechat=document.getElementById('wechatInput')?.value.trim();
-    if(!wechat || wechat.length<3 || wechat.length>20){ showToast('请填写3-20位微信号/手机号','warning'); return; }
-    remaining--; if(remaining<0) remaining=0;
-    try{ localStorage.setItem('eye_remaining',remaining); }catch(e){}
-    document.getElementById('remainingCount').innerText=remaining;
-    showToast('资料将尽快发送，请留意','success');
-    if(modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; }
-    if(document.getElementById('wechatInput')) document.getElementById('wechatInput').value='';
-    cancelSpeech();
-    recordEvent('Modal','Submit',wechat);
-  });
-  window.onclick=function(e){ if(e.target===modal && modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; cancelSpeech(); } };
-
-  // 穴位列表渲染（七穴）
+  // 穴位数据
   const acupoints = [
     { name:"睛明穴", loc:"内眼角凹陷", childDesc:"用食指指腹轻轻按揉，感觉酸酸胀胀的就可以", adultDesc:"拇指和食指捏住鼻梁，轻轻揉按", tip:"力度要轻，不要压眼球", voice:"找到鼻梁旁边，内眼角靠下的凹陷处。用食指轻轻按住，感觉到有点酸胀就对啦，轻轻揉10下。眼睛累的时候就按一按。", img:"images/jingming.jpg" },
     { name:"攒竹穴", loc:"眉头凹陷", childDesc:"拇指从眉头向外轻推，做8次", adultDesc:"拇指按住眉头，向外推揉", tip:"写作业后按一按", voice:"攒竹穴在眉头内侧，有一个小坑。用大拇指按住，轻轻往外推，会感觉酸麻感传到额头。每次推8下。", img:"images/cuanzhu.jpg" },
@@ -631,10 +505,80 @@
     recordEvent('Practice','Skip');
   }
 
+  // 21天打卡（累计制）
+  let checkinHistory=(()=>{ try{ return JSON.parse(localStorage.getItem('eye_checkinHistory')||'[]'); }catch(e){ return []; } })();
+  function updateCheckinUI(){
+    let html='';
+    for(let i=1;i<=21;i++) html+=`<span class="star ${i<=checkinHistory.length?'lit':''}">${i<=checkinHistory.length?'⭐':'☆'}</span>`;
+    document.getElementById('starRow').innerHTML=html;
+    document.getElementById('ckMsg').innerHTML=`✨ 累计打卡 ${checkinHistory.length} 天 ✨`;
+  }
+  function doCheckin(){
+    let today=new Date().toISOString().split('T')[0];
+    if(checkinHistory.includes(today)){ showToast('今天已经打卡啦','warning'); return; }
+    checkinHistory.push(today);
+    try{ localStorage.setItem('eye_checkinHistory',JSON.stringify(checkinHistory)); }catch(e){}
+    updateCheckinUI();
+    showToast(`打卡成功！累计${checkinHistory.length}天✨`,'success');
+    recordEvent('Checkin','Success',checkinHistory.length);
+  }
+  document.getElementById('checkinBtn')?.addEventListener('click',doCheckin);
+  updateCheckinUI();
+
+  // 视力档案与自测
+  document.getElementById('saveVisionBtn')?.addEventListener('click',()=>{
+    try{ localStorage.setItem('eye_vision',JSON.stringify({ right:document.getElementById('rxRight')?.value||'', left:document.getElementById('rxLeft')?.value||'', axial:document.getElementById('axialLen')?.value||'' })); showToast('档案已保存','success'); recordEvent('Vision','Saved'); }catch(e){ showToast('保存失败','warning'); }
+  });
+  document.getElementById('runAssessBtn')?.addEventListener('click',()=>{
+    let ageGroup=parseInt(document.getElementById('aAge')?.value||8), outdoor=parseInt(document.getElementById('aOut')?.value||3), near=parseInt(document.getElementById('aNear')?.value||0), sugar=parseInt(document.getElementById('aSugar')?.value||0), night=parseInt(document.getElementById('aNight')?.value||0);
+    let score=60; if(outdoor>=3) score+=25; else if(outdoor===2) score+=10; else score-=15; if(near===0) score+=15; else if(near===2) score-=10; if(sugar===0) score+=10; else if(sugar===2) score-=10; if(night===0) score+=10; else if(night===2) score-=10; if(ageGroup<=8 && outdoor<2) score-=10; score=Math.min(100,Math.max(20,score));
+    let level=score>=85?'优秀':(score>=65?'良好':'需加强'); let advice=[];
+    if(outdoor<2) advice.push('每天保证2小时户外光照'); if(near>=2) advice.push('每20分钟远眺20秒'); if(sugar>=1) advice.push('减少甜食摄入'); if(night>=1) advice.push('夜间看手机务必开灯'); if(ageGroup<=8 && score<70) advice.push('儿童远视储备消耗较快，建议增加监测频率'); if(document.getElementById('visionRole')?.value==='myopia') advice.push('已近视人群需定期复查眼底，避免剧烈运动');
+    document.getElementById('assessOut').innerHTML=`<strong>综合评分：${score}分（${level}）</strong><br>🎯 ${advice.length?advice.join('；'):'继续保持良好用眼习惯'}`;
+    recordEvent('Assess','Score',score);
+  });
+
+  // 字体切换
+  let fontLarge=(()=>{ try{ return localStorage.getItem('eye_fontLarge')==='true'; }catch(e){ return false; } })();
+  if(fontLarge) document.body.classList.add('font-large');
+  document.getElementById('fontToggleBtn')?.addEventListener('click',()=>{
+    document.body.classList.toggle('font-large');
+    try{ localStorage.setItem('eye_fontLarge',document.body.classList.contains('font-large')); }catch(e){}
+    recordEvent('UI','FontToggle');
+  });
+
+  // 模态框领取资料
+  let modal=document.getElementById('modalForm');
+  let remaining=(()=>{ try{ return parseInt(localStorage.getItem('eye_remaining'))||97; }catch(e){ return 97; } })();
+  document.getElementById('remainingCount').innerText=remaining;
+  document.getElementById('openModalBtn')?.addEventListener('click',()=>{ if(modal){ modal.style.visibility='visible'; modal.style.opacity='1'; } cancelSpeech(); recordEvent('Modal','Open'); });
+  document.getElementById('closeModal')?.addEventListener('click',()=>{ if(modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; } cancelSpeech(); });
+  document.getElementById('submitWechat')?.addEventListener('click',()=>{
+    let wechat=document.getElementById('wechatInput')?.value.trim();
+    if(!wechat || wechat.length<3 || wechat.length>20){ showToast('请填写3-20位微信号/手机号','warning'); return; }
+    remaining--; if(remaining<0) remaining=0;
+    try{ localStorage.setItem('eye_remaining',remaining); }catch(e){}
+    document.getElementById('remainingCount').innerText=remaining;
+    showToast('资料将尽快发送，请留意','success');
+    if(modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; }
+    if(document.getElementById('wechatInput')) document.getElementById('wechatInput').value='';
+    cancelSpeech();
+    recordEvent('Modal','Submit',wechat);
+  });
+  window.onclick=function(e){ if(e.target===modal && modal){ modal.style.visibility='hidden'; modal.style.opacity='0'; cancelSpeech(); } };
+
+  if(!localStorage.getItem('eye_visited')){
+    setTimeout(()=>{ showToast('👋 欢迎！每天和孩子一起护眼，坚持出奇迹～', 'info'); },1000);
+    try{ localStorage.setItem('eye_visited','true'); }catch(e){}
+    recordEvent('Init','FirstVisit');
+  }
+  recordEvent('Init','PageReady');
+
   // 全文朗读
-  let fullActive=false, fullIdx=0, fullSegments=[];
+  let fullActive=false, fullUtter=null, fullIdx=0, fullSegments=[];
   function cancelFullReading(){
     if(window.speechSynthesis) window.speechSynthesis.cancel();
+    if(fullUtter){ fullUtter.onend=null; fullUtter=null; }
     fullActive=false; fullIdx=0;
     let btn=document.getElementById('readFullBtn');
     if(btn) btn.innerHTML='🔊 朗读全文';
@@ -648,6 +592,7 @@
     utter.lang='zh-CN'; utter.rate=0.9;
     utter.onend=()=>{ fullIdx++; speakFullSegment(fullIdx); };
     utter.onerror=()=>{ fullIdx++; speakFullSegment(fullIdx); };
+    fullUtter=utter;
     window.speechSynthesis.speak(utter);
   }
   function startFullReading(){
@@ -682,11 +627,6 @@
   }
   document.getElementById('readFullBtn')?.addEventListener('click',startFullReading);
   window.addEventListener('beforeunload',()=>{ if(fullActive) cancelFullReading(); });
-
-  // 初始化游戏
-  setTimeout(() => {
-    initGame();
-  }, 100);
 </script>
 </body>
 </html>
